@@ -7,7 +7,7 @@ autoload -U compinit
 compinit
 
 # Add paths that should have been there by default
-export PATH=$HOME/bin:/usr/local/git/current/bin:/usr/local/sbin:/usr/local/bin:${PATH}
+export PATH=$HOME/bin:/usr/local/git/current/bin:/usr/local/sbin:/opt/local/bin:/usr/local/bin:${PATH}
 export FCEDIT=`which vim`
 set -o vi
 # Appends every command to the history file once it is executed
@@ -75,6 +75,7 @@ function whodoneit() {
         done
     )
 }
+export SHELL='/bin/zsh'
 
 export EDITOR=/usr/bin/vim
 
@@ -109,16 +110,64 @@ source "$HOME/google-cloud-sdk/path.zsh.inc"
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-source /Library/GoogleCorpSupport/srcfs/shell_completion/enable_completion.sh
+# source /Library/GoogleCorpSupport/srcfs/shell_completion/enable_completion.sh
 # export REMOTE_TSSERVER_HOSTNAME=ilteriscloudtop.c.googlers.com
 export ANDROID_HOME=/Users/ikaplan/Library/Android/sdk
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/tools:$PATH
 export PATH=/Library/TeX/texbin:$PATH
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_181, x86_64`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_192, x86_64`
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/ikaplan/Desktop/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/ikaplan/Desktop/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/ikaplan/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/ikaplan/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Use vi mode
+bindkey -v
+autoload up-line-or-beginning-search
+autoload down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+# Vi mode settings
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
+# # Beginning search with arrow keys
+# bindkey "^[OA" up-line-or-beginning-search
+# bindkey "^[OB" down-line-or-beginning-search
+# bindkey -M vicmd "k" up-line-or-beginning-search
+# bindkey -M vicmd "j" down-line-or-beginning-search
+
+# Easier, more vim-like editor opening
+# `v` is already mapped to visual mode, so we need to use a different key to
+# open Vim
+bindkey -M vicmd "^V" edit-command-line
+bindkey -M viins "jk" vi-cmd-mode
+# Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
+export KEYTIMEOUT=10
+
+# perform parameter expansion/command substitution in prompt
+setopt PROMPT_SUBST
+
+vim_ins_mode="[I]"
+vim_cmd_mode="[C]"
+vim_mode=$vim_ins_mode
+
+function zle-keymap-select {
+  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-finish {
+  vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
+
+RPROMPT='${vim_mode}'
+alias c='clear'
+
+export PATH="/usr/local/opt/gettext/bin:$PATH"
