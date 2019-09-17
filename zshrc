@@ -79,7 +79,6 @@ export SHELL='/bin/zsh'
 
 export EDITOR=/usr/bin/vim
 
-export PATH=$HOME/flutter/bin:$PATH
 export PATH=$HOME/Library/Android/sdk/tools:$HOME/Library/Android/sdk/platform-tools:$PATH
 
 bindkey '^R' history-incremental-search-backward
@@ -156,6 +155,7 @@ vim_ins_mode="[I]"
 vim_cmd_mode="[C]"
 vim_mode=$vim_ins_mode
 
+
 function zle-keymap-select {
   vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
   zle reset-prompt
@@ -171,3 +171,14 @@ RPROMPT='${vim_mode}'
 alias c='clear'
 
 export PATH="/usr/local/opt/gettext/bin:$PATH"
+eval 'set +o history' 2>/dev/null || setopt HIST_IGNORE_SPACE 2>/dev/null
+touch ~/.gitcookies
+chmod 0600 ~/.gitcookies
+
+   git config --global http.cookiefile ~/.gitcookies
+
+    tr , \\t <<\__END__ >>~/.gitcookies
+    gsuite-united-internal.googlesource.com,FALSE,/,TRUE,2147483647,o,git-ikaplan.google.com=1/IQi6YWdlcKC09OSPAfViRJOO8ylXRMyZK_GUb8io3Potib_mJZ-WjjEIv-QUVl6P
+    gsuite-united-internal-review.googlesource.com,FALSE,/,TRUE,2147483647,o,git-ikaplan.google.com=1/IQi6YWdlcKC09OSPAfViRJOO8ylXRMyZK_GUb8io3Potib_mJZ-WjjEIv-QUVl6P
+    __END__
+    eval 'set -o history' 2>/dev/null || unsetopt HIST_IGNORE_SPACE 2>/dev/null
