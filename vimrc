@@ -22,13 +22,8 @@ nnoremap <C-l> <C-w>l
 noremap % v% "highlights between two brackets
 "vimrc shortcut
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC " load vimrc easily"
-"nerdtree
-autocmd vimenter * NERDTree
-nmap <silent> <C-D> :NERDTreeToggle<CR>
 
-"close vim if the only window left open is a NERDTree
 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 set clipboard+=unnamed
 "keybindings for tslime
@@ -156,9 +151,11 @@ set cpoptions+=$
 "add a $ sign at the end of the c
 set virtualedit=all
 "set virtual edit to move freely in the buffer
-:hi Directory guifg=#FF0000 ctermfg=red "nerdtree directory color red
 
 "let g:airline_theme='luna'
 set tabstop=2 shiftwidth=2 expandtab
 set tags=./tags,tags;$HOME
 highlight LineNr ctermfg=grey
+let g:session_autoload = 'no'
+let $RUBYHOME=$HOME."/.rbenv/versions/2.5.1"
+set rubydll=$HOME/.rbenv/versions/2.5.1/lib/libruby.2.5.1.dylib
