@@ -1,0 +1,140 @@
+version: "3.2"
+services:
+# Radarr - https://linuxserver.dev/containers/radarr/
+# <mkdir /volume1/docker/appdata/radarr>
+  radarr:
+    container_name: radarr
+    image: ghcr.io/linuxserver/radarr:latest
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    network_mode: bridge
+    ports:
+      - 7878:7878
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${DOCKERCONFDIR}/radarr:/config
+      - ${DOCKERSTORAGEDIR}:/data
+
+# Sonarr - https://linuxserver.dev/containers/sonarr/
+# <mkdir /volume1/docker/appdata/sonarr>
+  sonarr:
+    container_name: sonarr
+    image: ghcr.io/linuxserver/sonarr:latest
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    network_mode: bridge
+    ports:
+      - 8989:8989
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${DOCKERCONFDIR}/sonarr:/config
+      - ${DOCKERSTORAGEDIR}:/data
+
+
+# SABnzbd - https://linuxserver.dev/containers/sabnzbd/
+# <mkdir /volume1/docker/appdata/sabnzbd>
+ sabnzbd:
+  container_name: sabnzbd
+  image: ghcr.io/linuxserver/sabnzbd:latest
+  restart: unless-stopped
+  logging:
+    driver: json-file
+  network_mode: bridge
+  ports:
+    - 8080:8080
+    - 9090:9090
+  environment:
+    - PUID=${PUID}
+    - PGID=${PGID}
+    - TZ=${TZ}
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+    - ${DOCKERCONFDIR}/sabnzbd:/config
+    - ${DOCKERSTORAGEDIR}/usenet:/data/usenet:rw
+
+
+# qBittorrent - https://docs.linuxserver.io/images/docker-qbittorrent
+# <mkdir /volume1/docker/appdata/qbittorent>
+qbittorrent:
+    container_name: qbittorrent
+    image: ghcr.io/linuxserver/qbittorrent
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    network_mode: bridge
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 8080:8080
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK=022
+      - WEBUI_PORT=8080
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${DOCKERCONFDIR}/qbittorrent:/config:rw
+      - ${DOCKERSTORAGEDIR}/torrents:/data/torrents:rw
+
+
+# Watchtower (automatic docker container updater) - https://github.com/containrrr/watchtower
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    network_mode: bridge
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK=022
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_STOPPED=false
+      - WATCHTOWER_MONITOR_ONLY=false
+      - WATCHTOWER_SCHEDULE=0 0 4 * * *
+      - WATCHTOWER_TIMEOUT=10s
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+
+# Plex - https://linuxserver.dev/containers/plex/
+# <mkdir /volume1/docker/appdata/plex>
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    network_mode: bridge
+    ports:
+      - 32400:32400
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK=002
+      - ARGS=
+      - DEBUG=no
+      - PLEX_CLAIM=${PLEX_CLAIM}
+      - ADVERTISE_IP=
+      - ALLOWED_NETWORKS=
+      - PLEX_PASS=${PLEX_PASS}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${DOCKERCONFDIR}/plex:/config:rw
+      - ${DOCKERSTORAGEDIR}/media:/data/media:rw
+      - /tmp:/transcode:rw
+      - /dev/dri:/dev/dri
