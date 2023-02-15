@@ -14,7 +14,7 @@ return {
 
   -- Neovim Autocomplete with LSP
   {
-    'L3MON4D3/LuaSnip', tag = "v1.1.0",
+    'L3MON4D3/LuaSnip', version = "1.2.1",
       wants = { "friendly-snippets", "vim-snippets" },
   },
 

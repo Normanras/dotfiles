@@ -3,11 +3,7 @@
 format = """
 $character\
 $directory\
-$username\
-$hostname\
 $python\
-$os\
-$shell\
 $fill\
 $git_branch$git_commit$git_state$git_status
 [>... ](fg:purple)
@@ -23,7 +19,7 @@ error_symbol = '[\(ಠ_ಠ\)](fg:red)'
 success_symbol = '[¯\\_\(ツ\)_/¯](fg:green)'
 
 [directory]
-truncation_length = 8
+truncation_length = 3
 
 [fill]
 symbol = '-'

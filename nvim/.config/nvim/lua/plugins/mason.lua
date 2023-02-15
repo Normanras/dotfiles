@@ -1,9 +1,9 @@
 return {
     -- Easy Way to install Language Servers
   { 'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
   },
-  'williamboman/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig',
 
   config = function()
     require("mason").setup()
