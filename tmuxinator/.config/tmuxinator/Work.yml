@@ -1,0 +1,24 @@
+# /Users/normrasmussen/.config/tmuxinator/NvimTemplates.yml
+
+name: Northpass
+root: ~/
+windows:
+  - notes:
+      root: ~/Documents/Work/CustomerNotes
+      panes:
+        - nvim
+  - templates:
+      root: ~/Documents/Work/Custom_Templates/customer_templates/
+      panes:
+        - nvim
+  - scripts:
+      root: ~/Documents/Work/Scripts
+      layout: main-horizontal
+      panes:
+        - nvim
+        - pyenv activate np_scripts
+  - dots:
+      root: ~/.config/nvim/
+      panes:
+        - nvim
+  - tut-tut: tut

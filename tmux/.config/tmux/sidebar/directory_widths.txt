@@ -1,0 +1,4 @@
+/Users/normrasmussen	40
+/Users/normrasmussen/Documents/Liquid_Templates	40
+/Users/normrasmussen/Documents/Liquid_Templates/customer_templates	69
+	40

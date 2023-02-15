@@ -1,0 +1,250 @@
+return {
+
+----------------------------------------------------------------
+-- LSP and Autocomplete Plugins
+-- They should be pulled first!
+-----------------------------------------------------------------
+
+  -- Manage all your Keymaps!
+  {
+    "gregorias/nvim-mapper",
+    config = function() require("nvim-mapper").setup{} end,
+    before = "telescope.nvim"
+  },
+
+  -- Neovim Autocomplete with LSP
+  {
+    'L3MON4D3/LuaSnip', tag = "v1.1.0",
+      wants = { "friendly-snippets", "vim-snippets" },
+  },
+
+------------------------------------------------------------
+-- General Functionality
+------------------------------------------------------------
+  'kdheepak/lazygit.nvim',
+  -- Tmux Navigation
+  {
+    "aserowy/tmux.nvim",
+    config = function() require("tmux").setup() end
+  },
+  -- Find & Search LSP Tags
+  'liuchengxu/vista.vim',
+
+  -- Snippets
+  'rafamadriz/friendly-snippets',
+
+  -- Rename and Work with Buffer & Tabs
+  'pacha/vem-tabline',
+
+  -- Nvim Tree File Manager on the Left
+  'nvim-tree/nvim-tree.lua',
+
+  -- Trouble Shows Errors with Files.
+  {
+    "folke/trouble.nvim",
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    config = function()
+      require("trouble").setup {
+      }
+    end
+  },
+
+-- Which Key
+  {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+      }
+    end
+  },
+
+-- Top Right Notify Pop Up
+  'rcarriga/nvim-notify',
+
+-- echasnovski Mini Modules (Selected)
+  {
+    'echasnovski/mini.move',
+    config = function()
+      require('mini.move').setup({
+      mappings = {
+	left  = '<S-left>',
+	right = '<S-right>',
+	down  = '<S-down>',
+	up    = '<S-up>',
+
+	line_left  = '<S-left>',
+	line_right = '<S-right>',
+	line_down  = '<S-down>',
+	line_up    = '<S-up>',
+      }
+      })
+    end
+  },
+  {
+  'echasnovski/mini.trailspace',
+    config = function()
+      require('mini.trailspace').setup()
+    end
+  },
+  {
+  'echasnovski/mini.surround', version = '*',
+    config = function()
+      require('mini.surround').setup()
+    end
+  },
+  {
+    'echasnovski/mini.pairs', branch = 'stable',
+    config = function()
+      require('mini.pairs').setup()
+    end
+  },
+  {
+    'echasnovski/mini.fuzzy', branch = 'stable',
+    config = function()
+      require('mini.fuzzy').setup()
+    end
+  },
+
+-----------------------------------------------------------
+-- Markdown Plugins
+------------------------------------------------------------
+
+  {
+    'jakewvincent/mkdnflow.nvim',
+    config = function()
+        require('mkdnflow').setup({
+          mappings = {
+            MkdnToggleToDo = {{'i', 'n'}, '<C-Space>'},
+            MkdnNewListItem = {{'i'}, '<CR>'},
+            MkdnEnter = {{'n'}, '<CR>'},
+            MkdnTableNextCell = false,
+            MkdnTab = {{'i',}, '<Tab>'},
+            MkdnSTab = {{'i'}, '<S-Tab>'},
+            MkdnFollowLink = {'n', '<leader>p'}
+          },
+	  wrap = true
+        })
+    end
+  },
+
+{ "iamcco/markdown-preview.nvim", build = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = {
+  "markdown" } end, ft = { "markdown" }, },
+
+  -- Prettier Plugin for Neovim specifically
+  'MunifTanjim/prettier.nvim',
+
+  -- DAP (Debug adaptor Protocol)
+  'mfussenegger/nvim-dap',
+
+ {
+   'mfussenegger/nvim-dap-python',
+   config = function()
+     require('dap-python').setup(
+     '~/.virtualenvs/debugpy/bin/python'
+     )
+    end
+  },
+ -- Sidebar
+ {
+   'sidebar-nvim/sidebar.nvim',
+   config = function()
+     require("sidebar-nvim").setup({
+      sections = {
+	  "symbols",
+	  "git",
+	  "diagnostics",
+	  "todos",
+	},
+	  initial_width = 45,
+	  hide_statusline = true,
+      todos = {
+        initially_closed = false, -- whether the groups should be initially closed on start. You can manually open/close groups later.
+    }
+  })
+  end
+},
+
+---------------------------------------------------------
+-- Text, Icons, Symbols
+----------------------------------------------------------
+  'lukas-reineke/indent-blankline.nvim',
+  'simrat39/symbols-outline.nvim',
+--  'nvim-tree/nvim-web-devicons',
+  'folke/lsp-colors.nvim',
+  'karb94/neoscroll.nvim',
+
+  -- Allow Popups for Telescope etc
+  'nvim-lua/popup.nvim',
+  'nvim-lua/plenary.nvim',
+
+  -- Todo & Comments for Organization
+  {
+    'folke/todo-comments.nvim',
+      dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+          require("todo-comments").setup {
+               keywords = {
+                  FIX = {
+                    icon = " ", -- icon used for the sign, and in search results
+                    color = "error", -- can be a hex color, or a named color (see below)
+                    alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+                  -- signs = false, -- configure signs for some keywords individually
+                  },
+                  DONE = { icon = " ", color = "info" },
+                  FEAT = { icon = " ", color = "warning", alt = { "NEED", "REQUEST" } },
+                  WARN = { icon = " ", color = "error", alt = { "WARNING", "ERROR" } },
+                  TODO = { icon = " ", color = "hint", alt = { "TASK", "TBD" } },
+                  NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+                  SENG = { icon = " ", color = "test", alt = { "SOLUTIONS", "SE", "WORKAROUND" } },
+                },
+                highlight = {
+                  comments_only = false,
+                },
+                colors = {
+                  error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+                  warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
+                  info = { "DiagnosticInfo", "#2563EB" },
+                  hint = { "DiagnosticHint", "#10B981" },
+                  default = { "Identifier", "#7C3AED" },
+                  test = { "Identifier", "#FF00FF" }
+                },
+	    }
+      end
+  },
+  -- Various telescopes
+  'nvim-telescope/telescope-file-browser.nvim',
+
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make'
+  },
+
+-----------------------------------------------------------
+-- Various Color Schemes, Dashboard, etc
+-----------------------------------------------------------
+  'tanvirtin/monokai.nvim',
+  'gbprod/nord.nvim',
+  'Mofiqul/dracula.nvim',
+  'lunarvim/colorschemes',
+  'rose-pine/neovim',
+  'catppuccin/nvim',
+  {
+    "folke/tokyonight.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme tokyonight]])
+    end,
+  },
+  {
+    'feline-nvim/feline.nvim',
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
+  },
+  'ellisonleao/glow.nvim',
+  -- Plugin that causes your code to crumble >:)
+  -- 'eandrju/cellular-automaton.nvim',
+
+-- Wakatime Tracking
+  'wakatime/vim-wakatime'
+  }
