@@ -59,9 +59,14 @@ M('n', '<leader>--', ':SidebarNvimResize -10<CR>', default_opts,
   "Sidebar -10", "sidebar-minus10", "Sidebar Smaller by 10"
 )--]]
 
+-- Lazy Git
+M('n', '<leader>lg', ":LazyGit<CR>", default_opts,
+  "Lazy Git", "lazy-git", "Show Lazy Git"
+)
+
 -- Markdown Preview Toggle
 M('n', '<leader>P', ":MarkdownPreview<CR>", default_opts,
-  "Markdown Preview", "md_preview", "Display Markdown preview in Qutebrowser"
+  "Markdown Preview", "md_preview", "Display Markdown preview in browser"
 )
 
 -- Telescope Options
