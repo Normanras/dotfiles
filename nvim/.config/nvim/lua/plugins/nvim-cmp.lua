@@ -22,7 +22,10 @@ return {
       if not luasnip_status_ok then
 	return
       end
-      --cmp.setup {
+
+      require("luasnip.loaders.from_vscode").lazy_load()
+
+      cmp.setup {
 	-- Load snippet support
 	--snippet = {
 	--  expand = function(args)
@@ -33,7 +36,7 @@ return {
 	completion = {
 	  --completeopt = 'menu,menuone,noselect'
 	  keyword_length = 2
-	}
+	},
 
 	-- Key mapping
 	mapping = {
@@ -68,9 +71,13 @@ return {
 	    else
 	      fallback()
 	    end
-	  end
-	}
-
+	  end,
+	},
+	snippet = {
+	  expand = function(args)
+	    require('luasnip').lsp_expand(args.body)
+	  end,
+	},
 	-- Load sources, see: https://github.com/topics/nvim-cmp
 	sources = {
 	  { name = 'nvim-lsp' },
@@ -79,5 +86,6 @@ return {
 	  { name = 'buffer' },
 	  { name = 'zsh' },
 	}
+      }
     end
 }

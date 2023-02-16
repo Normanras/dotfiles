@@ -1,9 +1,24 @@
 return {
-
 ----------------------------------------------------------------
 -- LSP and Autocomplete Plugins
 -- They should be pulled first!
 -----------------------------------------------------------------
+{'williamboman/mason.nvim',
+  config = function() require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+  end,
+},
+  { 'williamboman/mason-lspconfig.nvim',
+    config = function() require("mason-lspconfig").setup{} end,
+  },
+  { 'neovim/nvim-lspconfig' },
 
   -- Manage all your Keymaps!
   {
@@ -12,16 +27,24 @@ return {
     before = "telescope.nvim"
   },
 
-  -- Neovim Autocomplete with LSP
   {
     'L3MON4D3/LuaSnip', version = "1.2.1",
-      wants = { "friendly-snippets", "vim-snippets" },
+      dependencies = { "friendly-snippets" },
   },
+    'saadparwaiz1/cmp_luasnip',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
 
 ------------------------------------------------------------
 -- General Functionality
 ------------------------------------------------------------
   'kdheepak/lazygit.nvim',
+  {
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'kyazdani42/nvim-web-devicons' },
+  config = function() require('lualine').setup{
+    options = { theme = 'codedark' }
+  } end,
+},
   -- Tmux Navigation
   {
     "aserowy/tmux.nvim",
