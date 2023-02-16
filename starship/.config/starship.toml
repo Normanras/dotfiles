@@ -26,7 +26,7 @@ symbol = '-'
 style = 'bold grey'
 
 [python]
-format = '$symbol ($virtualenv)($style)'
+format = '$symbol($virtualenv)($style)'
 
 [git_branch]
 symbol = '🌱 '
