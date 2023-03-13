@@ -51,7 +51,7 @@ return {
     config = function() require("tmux").setup() end
   },
   -- Find & Search LSP Tags
-  'liuchengxu/vista.vim',
+--  'liuchengxu/vista.vim',
 
   -- Snippets
   'rafamadriz/friendly-snippets',
@@ -173,25 +173,36 @@ return {
    config = function()
      require("sidebar-nvim").setup({
       sections = {
-	  "symbols",
 	  "git",
+	  "symbols",
 	  "diagnostics",
 	  "todos",
+     },
+	todos = {
+	  initially_closed = false, -- whether the groups should be initially closed on start. You can manually open/close groups later.
 	},
-	  initial_width = 45,
-	  hide_statusline = true,
-      todos = {
-        initially_closed = false, -- whether the groups should be initially closed on start. You can manually open/close groups later.
-    }
+	diagnostics = {
+	  icon = "",
+	},
   })
   end
+},
+
+{
+  'rcarriga/nvim-dap-ui', dependencies = {"mfussenegger/nvim-dap"}
 },
 
 ---------------------------------------------------------
 -- Text, Icons, Symbols
 ----------------------------------------------------------
+  {
+    'simrat39/symbols-outline.nvim',
+    config = function()
+      require('symbols-outline').setup()
+    end
+  },
+
   'lukas-reineke/indent-blankline.nvim',
-  'simrat39/symbols-outline.nvim',
 --  'nvim-tree/nvim-web-devicons',
   'folke/lsp-colors.nvim',
   'karb94/neoscroll.nvim',

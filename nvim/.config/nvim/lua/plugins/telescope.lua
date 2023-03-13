@@ -138,7 +138,8 @@ return {
 		    ["<C-y>"] = fb_actions.copy,
 		    ["<C-r>"] = fb_actions.rename,
 		    ["<C-w>"] = fb_actions.goto_cwd,
-		    ["<C-o>"] = fb_actions.open
+		    ["<C-o>"] = fb_actions.open,
+		    ["<C-d>"] = fb_actions.remove
 		  },
 		},
 	      },

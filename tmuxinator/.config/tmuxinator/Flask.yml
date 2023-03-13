@@ -1,0 +1,9 @@
+# ~/Documents/Projects/CSM_webapp/
+
+name: Flask
+root: ~/Documents/Projects/CSM_webapp/
+on_project_start: pyenv activate csmflask
+windows:
+  - flask:
+      root: ~/Documents/Projects/CSM_webapp/
+      layout: e90b,204x63,0,0[204x46,0,0,0,204x16,0,47{36x16,0,47,2,84x16,37,47,3,82x16,122,47,4}]

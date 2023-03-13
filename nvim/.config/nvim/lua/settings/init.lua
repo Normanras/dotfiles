@@ -35,8 +35,8 @@ opt.number = true               -- Show line number
 opt.relativenumber = true       -- Show Current Line with Relative numbers above and below cursor.
 opt.showmatch = true            -- Highlight matching parenthesis
 opt.foldmethod = 'syntax'       -- Enable folding (default 'foldmarker')
-opt.colorcolumn = '120'          -- Line length marker at 80 columns
-opt.textwidth = 120
+opt.colorcolumn = '100'          -- Line length marker at 80 columns
+opt.textwidth = 100
 opt.splitright = true           -- Vertical split to the right
 opt.splitbelow = true           -- Horizontal split to the bottom
 opt.ignorecase = true           -- Ignore case letters when search
@@ -68,9 +68,9 @@ opt.smartindent = true          -- Autoindent new lines
 -----------------------------------------------------------
 g.glow_binary_path = '/bin'
 g.glow_border = 'rounded'
-g.glow_width = 120
+g.glow_width = 100
 g.glow_use_pager = true
-g.glow_style = 'dark'
+g.glow_style = 'light'
 -----------------------------------------------------------
 -- MKDX Settings, mkdx#settings.
 -----------------------------------------------------------
