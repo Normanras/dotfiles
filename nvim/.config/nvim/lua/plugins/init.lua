@@ -40,7 +40,7 @@ return {
   'kdheepak/lazygit.nvim',
   {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'kyazdani42/nvim-web-devicons' },
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function() require('lualine').setup{
     options = { theme = 'palenight' }
   } end,
@@ -57,7 +57,11 @@ return {
   'rafamadriz/friendly-snippets',
 
   -- Rename and Work with Buffer & Tabs
-  'pacha/vem-tabline',
+--  'pacha/vem-tabline',
+  {'romgrk/barbar.nvim',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  },
 
   -- Nvim Tree File Manager on the Left
   'nvim-tree/nvim-tree.lua',
@@ -65,7 +69,7 @@ return {
   -- Trouble Shows Errors with Files.
   {
     "folke/trouble.nvim",
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require("trouble").setup {
       }
@@ -261,6 +265,7 @@ return {
   'Mofiqul/dracula.nvim',
   'lunarvim/colorschemes',
   'rose-pine/neovim',
+  'EdenEast/nightfox.nvim',
   'catppuccin/nvim',
   {
     "folke/tokyonight.nvim",
@@ -273,7 +278,7 @@ return {
   },
   {
     'feline-nvim/feline.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   'ellisonleao/glow.nvim',
   -- Plugin that causes your code to crumble >:)

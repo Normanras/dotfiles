@@ -28,6 +28,7 @@ opt.spell=true
 opt.spelllang = 'en_us'
 cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
 vim.api.nvim_set_hl(0, "ColorColumn", {guibg=lightmagenta})
+o.showtabline = 2
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
