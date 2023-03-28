@@ -46,7 +46,7 @@ g.markdown_folding = 1
 opt.spell=true
 opt.spelllang = 'en_us'
 cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
-vim.api.nvim_set_hl(0, "ColorColumn", {guibg=lightmagenta})
+-- vim.api.nvim_set_hl(0, "ColorColumn", {guibg=lightmagenta})
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
@@ -75,6 +75,7 @@ opt.synmaxcol = 240             -- Max column for syntax highlight
 -- Colorscheme
 -----------------------------------------------------------
 opt.termguicolors = true      -- Enable 24-bit RGB colors
+cmd[[colorscheme dracula]]
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------

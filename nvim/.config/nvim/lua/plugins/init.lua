@@ -90,6 +90,12 @@ return {
 
 -- echasnovski Mini Modules (Selected)
   {
+    'echasnovski/mini.comment', version = '*',
+    config = function()
+      require('mini.comment').setup()
+    end
+  },
+  {
     'echasnovski/mini.move',
     config = function()
       require('mini.move').setup({
@@ -260,10 +266,8 @@ return {
 -----------------------------------------------------------
 -- Various Color Schemes, Dashboard, etc
 -----------------------------------------------------------
-  'tanvirtin/monokai.nvim',
-  'gbprod/nord.nvim',
-  'Mofiqul/dracula.nvim',
-  'lunarvim/colorschemes',
+ {'ray-x/starry.nvim', setup=function()
+ end},
   'rose-pine/neovim',
   'EdenEast/nightfox.nvim',
   'catppuccin/nvim',
@@ -273,9 +277,11 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
-      vim.cmd([[colorscheme tokyonight]])
+     --  vim.cmd([[colorscheme tokyonight]])
     end,
   },
+  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = true, priority = 1000 },
+  'Bekaboo/deadcolumn.nvim',
   {
     'feline-nvim/feline.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
