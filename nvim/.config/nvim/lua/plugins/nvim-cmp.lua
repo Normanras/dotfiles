@@ -83,8 +83,8 @@ return {
 	  { name = 'nvim-lsp' },
 	  { name = 'luasnip' },
 	  { name = 'path' },
-	  { name = 'buffer' },
-	  { name = 'zsh' },
+	--  { name = 'buffer' },
+	-- { name = 'zsh' },
 	}
       }
     end

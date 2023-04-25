@@ -30,9 +30,22 @@ return {
   {
     'L3MON4D3/LuaSnip', version = "1.2.1",
       dependencies = { "friendly-snippets" },
+--  {
+--    'bennypowers/nvim-regexplainer',
+--    dependencies = {
+--      'nvim-treesitter/nvim-treesitter',
+--      'MunifTanjim/nui.nvim',
+--    },
+--      config = function() require('regexplainer').setup{} end,
+--  },
   },
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp-signature-help',
+  {
+    'asiryk/auto-hlsearch.nvim',
+    version = "1.1.0",
+    config = function() require("auto-hlsearch").setup{} end,
+  },
 
 ------------------------------------------------------------
 -- General Functionality
@@ -84,6 +97,15 @@ return {
       }
     end
   },
+  {
+    "kiyoon/jupynium.nvim",
+    build = "pip3 install --user .",
+    -- build = "conda run --no-capture-output -n jupynium pip install .",
+    -- enabled = vim.fn.isdirectory(vim.fn.expand "~/miniconda3/envs/jupynium"),
+  },
+  "hrsh7th/nvim-cmp",       -- optional, for completion
+  "rcarriga/nvim-notify",   -- optional
+  "stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
 
 -- Top Right Notify Pop Up
   'rcarriga/nvim-notify',
@@ -160,7 +182,7 @@ return {
     end
   },
 
-{ "iamcco/markdown-preview.nvim", build = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = {
+{ "iamcco/markdown-preview.nvim", build = "cd app && npm install", init = function() vim.g.mkdp_filetypes = {
   "markdown" } end, ft = { "markdown" }, },
 
   -- Prettier Plugin for Neovim specifically
@@ -177,11 +199,18 @@ return {
      )
     end
   },
+  {
+    'rebelot/terminal.nvim',
+    config = function()
+        require("terminal").setup()
+    end
+},
  -- Sidebar
  {
    'sidebar-nvim/sidebar.nvim',
    config = function()
      require("sidebar-nvim").setup({
+      side = "right",
       sections = {
 	  "git",
 	  "symbols",
@@ -270,6 +299,7 @@ return {
  end},
   'rose-pine/neovim',
   'EdenEast/nightfox.nvim',
+  'rebelot/kanagawa.nvim',
   'catppuccin/nvim',
   {
     "folke/tokyonight.nvim",

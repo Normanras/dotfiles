@@ -114,13 +114,13 @@ return {
 	      preview = {
 		treesitter = {
 		  enable = {
-		    'css', 'dockerfile', 'elixir', 'erlang', 'fish',
+		    'css', 'dockerfile', 'elixir', 'erlang', 'zsh',
 		    'html', 'http', 'javascript', 'json', 'lua', 'php',
-		    'python', 'regex', 'ruby', 'rust', 'scss', 'svelte',
-		    'typescript', 'vue', 'yaml', 'markdown', 'bash', 'c',
+		    'python', 'regex', 'ruby', 'rust', 'scss',
+		    'typescript', 'yaml', 'markdown', 'bash', 'c',
 		    'cmake', 'comment', 'cpp', 'dart', 'go', 'jsdoc',
-		    'json5', 'jsonc', 'llvm', 'make', 'ninja', 'prisma',
-		    'proto', 'pug', 'swift', 'todotxt', 'toml', 'tsx',
+		    'json5', 'jsonc', 'llvm', 'make', 'ninja',
+		    'todotxt', 'toml', 'help'
 		  }
 		}
 	      },

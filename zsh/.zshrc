@@ -7,6 +7,7 @@ export LANG=en_US.UTF-8
 plugins=(
     zsh-autosuggestions
     git
+    wakatime
 )
 
 # User configuration
@@ -34,3 +35,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/opt/homebrew/sbin:$PATH"
 eval "$(starship init zsh)"
+export PATH="/opt/homebrew/bin:$PATH"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/normrasmussen/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
