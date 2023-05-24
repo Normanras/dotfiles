@@ -28,7 +28,7 @@ eval "$(pyenv init -)"
 
 test -e /Users/normrasmussen/.iterm2_shell_integration.zsh && source /Users/normrasmussen/.iterm2_shell_integration.zsh || true
 
-source /Users/normrasmussen/.docker/init-zsh.sh || true # Added by Docker Desktop
+# source /Users/normrasmussen/.docker/init-zsh.sh || true # Added by Docker Desktop
 
 export PATH="$PATH:$HOME/.rvm/bin"
 

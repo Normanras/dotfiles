@@ -1,8 +1,10 @@
 return {
 ----------------------------------------------------------------
+
 -- LSP and Autocomplete Plugins
 -- They should be pulled first!
 -----------------------------------------------------------------
+
 {'williamboman/mason.nvim',
   config = function() require("mason").setup({
     ui = {
@@ -48,9 +50,10 @@ return {
   },
 
 ------------------------------------------------------------
+
 -- General Functionality
 ------------------------------------------------------------
-  'kdheepak/lazygit.nvim',
+
   {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -97,15 +100,7 @@ return {
       }
     end
   },
-  {
-    "kiyoon/jupynium.nvim",
-    build = "pip3 install --user .",
-    -- build = "conda run --no-capture-output -n jupynium pip install .",
-    -- enabled = vim.fn.isdirectory(vim.fn.expand "~/miniconda3/envs/jupynium"),
-  },
   "hrsh7th/nvim-cmp",       -- optional, for completion
-  "rcarriga/nvim-notify",   -- optional
-  "stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
 
 -- Top Right Notify Pop Up
   'rcarriga/nvim-notify',
@@ -122,15 +117,15 @@ return {
     config = function()
       require('mini.move').setup({
       mappings = {
-	left  = '<S-left>',
-	right = '<S-right>',
-	down  = '<S-down>',
-	up    = '<S-up>',
+	 left  = '<S-left>',
+	 right = '<S-right>',
+	 down  = '<S-down>',
+	 up    = '<S-up>',
 
-	line_left  = '<S-left>',
-	line_right = '<S-right>',
-	line_down  = '<S-down>',
-	line_up    = '<S-up>',
+	 line_left  = '<S-left>',
+	 line_right = '<S-right>',
+	 line_down  = '<S-down>',
+	 line_up    = '<S-up>',
       }
       })
     end
@@ -161,6 +156,7 @@ return {
   },
 
 -----------------------------------------------------------
+
 -- Markdown Plugins
 ------------------------------------------------------------
 
@@ -177,16 +173,13 @@ return {
             MkdnSTab = {{'i'}, '<S-Tab>'},
             MkdnFollowLink = {'n', '<leader>p'}
           },
-	  wrap = true
+   wrap = true
         })
     end
   },
 
 { "iamcco/markdown-preview.nvim", build = "cd app && npm install", init = function() vim.g.mkdp_filetypes = {
   "markdown" } end, ft = { "markdown" }, },
-
-  -- Prettier Plugin for Neovim specifically
-  'MunifTanjim/prettier.nvim',
 
   -- DAP (Debug adaptor Protocol)
   'mfussenegger/nvim-dap',
@@ -199,12 +192,6 @@ return {
      )
     end
   },
-  {
-    'rebelot/terminal.nvim',
-    config = function()
-        require("terminal").setup()
-    end
-},
  -- Sidebar
  {
    'sidebar-nvim/sidebar.nvim',
@@ -212,18 +199,18 @@ return {
      require("sidebar-nvim").setup({
       side = "right",
       sections = {
-	  "git",
-	  "symbols",
-	  "diagnostics",
-	  "files",
-	  "todos",
+   "git",
+   "symbols",
+   "diagnostics",
+   "files",
+   "todos",
      },
-	todos = {
-	  initially_closed = false, -- whether the groups should be initially closed on start. You can manually open/close groups later.
-	},
-	diagnostics = {
-	  icon = "",
-	},
+ todos = {
+   initially_closed = false, -- whether the groups should be initially closed on start. You can manually open/close groups later.
+ },
+ diagnostics = {
+   icon = "",
+ },
   })
   end
 },
@@ -233,8 +220,10 @@ return {
 },
 
 ---------------------------------------------------------
+
 -- Text, Icons, Symbols
 ----------------------------------------------------------
+
   {
     'simrat39/symbols-outline.nvim',
     config = function()
@@ -243,7 +232,6 @@ return {
   },
 
   'lukas-reineke/indent-blankline.nvim',
---  'nvim-tree/nvim-web-devicons',
   'folke/lsp-colors.nvim',
   'karb94/neoscroll.nvim',
 
@@ -282,7 +270,7 @@ return {
                   default = { "Identifier", "#7C3AED" },
                   test = { "Identifier", "#FF00FF" }
                 },
-	    }
+     }
       end
   },
   -- Various telescopes
@@ -294,8 +282,10 @@ return {
   },
 
 -----------------------------------------------------------
+
 -- Various Color Schemes, Dashboard, etc
 -----------------------------------------------------------
+
  {'ray-x/starry.nvim', setup=function()
  end},
   'rose-pine/neovim',
