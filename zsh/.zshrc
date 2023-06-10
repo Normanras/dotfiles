@@ -1,6 +1,6 @@
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -8,6 +8,11 @@ plugins=(
     zsh-autosuggestions
     git
     wakatime
+    brew
+    npm
+    z
+    zsh-syntax-highlighting
+    vi-mode
 )
 
 # User configuration
@@ -15,8 +20,6 @@ plugins=(
 export DOT="~/.dotfiles"
 alias vim='vim -S ~/.vimrc'
 alias nvim='nvim'
-alias cd2='cd .. && cd ..'
-alias tt="docker exec -ti timetagger_timetagger_1 timetagger"
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 export EDITOR="$VISUAL"
@@ -26,7 +29,22 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-test -e /Users/normrasmussen/.iterm2_shell_integration.zsh && source /Users/normrasmussen/.iterm2_shell_integration.zsh || true
+alias nvim-minimal="NVIM_APPNAME=Minivim nvim"
+# alias nvim-arduino="NVIM_APPNAME=Arduino nvim"
+
+function nvims() {
+  items=("Main" "Minivim" "Arduinvim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "Main" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+
+bindkey -s ^a "nvims\n"
 
 # source /Users/normrasmussen/.docker/init-zsh.sh || true # Added by Docker Desktop
 
@@ -36,7 +54,3 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/opt/homebrew/sbin:$PATH"
 eval "$(starship init zsh)"
 export PATH="/opt/homebrew/bin:$PATH"
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/normrasmussen/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

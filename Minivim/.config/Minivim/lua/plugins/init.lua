@@ -1,6 +1,5 @@
 return {
 ----------------------------------------------------------------
-
 -- LSP and Autocomplete Plugins
 -- They should be pulled first!
 -----------------------------------------------------------------
@@ -32,14 +31,6 @@ return {
   {
     'L3MON4D3/LuaSnip', version = "1.2.1",
       dependencies = { "friendly-snippets" },
---  {
---    'bennypowers/nvim-regexplainer',
---    dependencies = {
---      'nvim-treesitter/nvim-treesitter',
---      'MunifTanjim/nui.nvim',
---    },
---      config = function() require('regexplainer').setup{} end,
---  },
   },
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp-signature-help',
@@ -52,9 +43,7 @@ return {
 ------------------------------------------------------------
 -- General Functionality
 ------------------------------------------------------------
-  {
-    'stevearc/vim-arduino'
-  },
+
   {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -67,8 +56,6 @@ return {
     "aserowy/tmux.nvim",
     config = function() require("tmux").setup() end
   },
-  -- Find & Search LSP Tags
---  'liuchengxu/vista.vim',
 
   -- Snippets
   'rafamadriz/friendly-snippets',
@@ -156,43 +143,9 @@ return {
     end
   },
 
------------------------------------------------------------
-
--- Markdown Plugins
-------------------------------------------------------------
-
-  {
-    'jakewvincent/mkdnflow.nvim',
-    config = function()
-        require('mkdnflow').setup({
-          mappings = {
-            MkdnToggleToDo = {{'i', 'n'}, '<C-Space>'},
-            MkdnNewListItem = {{'i'}, '<CR>'},
-            MkdnEnter = {{'n'}, '<CR>'},
-            MkdnTableNextCell = false,
-            MkdnTab = {{'i',}, '<Tab>'},
-            MkdnSTab = {{'i'}, '<S-Tab>'},
-            MkdnFollowLink = {'n', '<leader>p'}
-          },
-   wrap = true
-        })
-    end
-  },
-
-{ "iamcco/markdown-preview.nvim", build = "cd app && npm install", init = function() vim.g.mkdp_filetypes = {
-  "markdown" } end, ft = { "markdown" }, },
-
   -- DAP (Debug adaptor Protocol)
   'mfussenegger/nvim-dap',
 
- {
-   'mfussenegger/nvim-dap-python',
-   config = function()
-     require('dap-python').setup(
-     '~/.virtualenvs/debugpy/bin/python'
-     )
-    end
-  },
  -- Sidebar
  {
    'sidebar-nvim/sidebar.nvim',
@@ -221,7 +174,6 @@ return {
 },
 
 ---------------------------------------------------------
-
 -- Text, Icons, Symbols
 ----------------------------------------------------------
 
@@ -240,40 +192,6 @@ return {
   'nvim-lua/popup.nvim',
   'nvim-lua/plenary.nvim',
 
-  -- Todo & Comments for Organization
-  {
-    'folke/todo-comments.nvim',
-      dependencies = "nvim-lua/plenary.nvim",
-        config = function()
-          require("todo-comments").setup {
-               keywords = {
-                  FIX = {
-                    icon = " ", -- icon used for the sign, and in search results
-                    color = "error", -- can be a hex color, or a named color (see below)
-                    alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-                  -- signs = false, -- configure signs for some keywords individually
-                  },
-                  DONE = { icon = " ", color = "info" },
-                  FEAT = { icon = " ", color = "warning", alt = { "NEED", "REQUEST" } },
-                  WARN = { icon = " ", color = "error", alt = { "WARNING", "ERROR" } },
-                  TODO = { icon = " ", color = "hint", alt = { "TASK", "TBD" } },
-                  NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-                  SENG = { icon = " ", color = "test", alt = { "SOLUTIONS", "SE", "WORKAROUND" } },
-                },
-                highlight = {
-                  comments_only = false,
-                },
-                colors = {
-                  error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
-                  warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
-                  info = { "DiagnosticInfo", "#2563EB" },
-                  hint = { "DiagnosticHint", "#10B981" },
-                  default = { "Identifier", "#7C3AED" },
-                  test = { "Identifier", "#FF00FF" }
-                },
-     }
-      end
-  },
   -- Various telescopes
   'nvim-telescope/telescope-file-browser.nvim',
 
@@ -283,13 +201,11 @@ return {
   },
 
 -----------------------------------------------------------
-
 -- Various Color Schemes, Dashboard, etc
 -----------------------------------------------------------
 
  {'ray-x/starry.nvim', setup=function()
  end},
-  'rose-pine/neovim',
   'EdenEast/nightfox.nvim',
   'catppuccin/nvim',
   {
@@ -297,8 +213,6 @@ return {
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      -- load the colorscheme here
-     --  vim.cmd([[colorscheme tokyonight]])
     end,
   },
   { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = true, priority = 1000 },
@@ -307,9 +221,6 @@ return {
     'feline-nvim/feline.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
-  'ellisonleao/glow.nvim',
-  -- Plugin that causes your code to crumble >:)
-  -- 'eandrju/cellular-automaton.nvim',
 
 -- Wakatime Tracking
   'wakatime/vim-wakatime'
