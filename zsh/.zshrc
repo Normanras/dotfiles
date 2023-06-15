@@ -30,7 +30,7 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 alias nvim-minimal="NVIM_APPNAME=Minivim nvim"
-# alias nvim-arduino="NVIM_APPNAME=Arduino nvim"
+alias nvim-arduino="NVIM_APPNAME=Arduino nvim"
 
 function nvims() {
   items=("Main" "Minivim" "Arduinvim")
