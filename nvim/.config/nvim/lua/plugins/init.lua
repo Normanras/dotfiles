@@ -236,7 +236,7 @@ return {
 
   'lukas-reineke/indent-blankline.nvim',
   'folke/lsp-colors.nvim',
-  'Mofiqul/dracula.nvim'
+  'Mofiqul/dracula.nvim',
   'karb94/neoscroll.nvim',
 
   -- Allow Popups for Telescope etc
