@@ -23,11 +23,11 @@ return {
   { 'neovim/nvim-lspconfig' },
 
   -- Manage all your Keymaps!
-  {
-    "gregorias/nvim-mapper",
-    config = function() require("nvim-mapper").setup{} end,
-    before = "telescope.nvim"
-  },
+ -- {
+ --   "gregorias/nvim-mapper",
+ --   config = function() require("nvim-mapper").setup{} end,
+ --   before = "telescope.nvim"
+ -- },
 
   {
     'L3MON4D3/LuaSnip', version = "1.2.1",
@@ -106,8 +106,11 @@ return {
 -- Top Right Notify Pop Up
   'rcarriga/nvim-notify',
 
--- echasnovski Mini Modules (Selected)
-  {
+------------------------------------------------------------
+-- echasnovski's Minis get a section of their own...
+------------------------------------------------------------
+
+{
     'echasnovski/mini.comment', version = '*',
     config = function()
       require('mini.comment').setup()
@@ -157,7 +160,6 @@ return {
   },
 
 -----------------------------------------------------------
-
 -- Markdown Plugins
 ------------------------------------------------------------
 
@@ -234,6 +236,7 @@ return {
 
   'lukas-reineke/indent-blankline.nvim',
   'folke/lsp-colors.nvim',
+  'Mofiqul/dracula.nvim'
   'karb94/neoscroll.nvim',
 
   -- Allow Popups for Telescope etc

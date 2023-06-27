@@ -16,7 +16,7 @@ return {
 	--      null_ls.builtins.diagnostics.pylama,
 	      null_ls.builtins.formatting.black,
 	 --     null_ls.builtins.diagnostics.pylint,
-	      null_ls.builtins.diagnostics.pycodestyle.with({ extra_args = { "--max-line-length=150" }}),
+	      null_ls.builtins.diagnostics.pycodestyle.with({ extra_args = { "--max-line-length=120" }}),
 	    },
 	  })
       end
