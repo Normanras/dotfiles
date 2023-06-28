@@ -48,7 +48,7 @@ return {
 	      results_title = false,
 	      sorting_strategy = 'descending',
 	      layout_strategy = 'bottom_pane',
-	      layout_config = {
+	    layout_config = {
 		height = 13,
 		preview_cutoff = 1,
 		prompt_position = 'bottom'

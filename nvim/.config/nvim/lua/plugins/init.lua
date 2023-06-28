@@ -43,6 +43,7 @@ return {
   },
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp-signature-help',
+    'lukas-reineke/cmp-under-comparator',
   {
     'asiryk/auto-hlsearch.nvim',
     version = "1.1.0",
@@ -52,8 +53,17 @@ return {
 ------------------------------------------------------------
 -- General Functionality
 ------------------------------------------------------------
+  'stevearc/vim-arduino',
   {
-    'stevearc/vim-arduino'
+    'nacro90/numb.nvim',
+    config = function() require('numb').setup{
+      show_cursorline = false,
+      show_numbers = false, -- Enable 'number' for the window while peeking
+      hide_relativenumbers = false, -- Enable turning off 'relativenumber' for the window while peeking
+      number_only = true, -- Peek only when the command is only a number instead of when it starts with a number
+      centered_peeking = true,
+    }
+    end,
   },
   {
   'nvim-lualine/lualine.nvim',
@@ -105,6 +115,7 @@ return {
 
 -- Top Right Notify Pop Up
   'rcarriga/nvim-notify',
+  {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}},
 
 ------------------------------------------------------------
 -- echasnovski's Minis get a section of their own...

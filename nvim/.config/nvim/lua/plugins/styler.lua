@@ -7,7 +7,7 @@ return {
 	python = { colorscheme = "dracula" },
 	html = { colorscheme = "carbonfox" },
         help = { colorscheme = "catppuccin-mocha", background = "dark" },
-	css = { colorscheme = "carbonfox" }
+	css = { colorscheme = "carbonfox" },
       },
     })
   end,

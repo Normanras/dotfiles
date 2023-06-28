@@ -57,8 +57,7 @@ opt.synmaxcol = 240             -- Max column for syntax highlight
 -- Colorscheme
 -----------------------------------------------------------
 opt.termguicolors = true      -- Enable 24-bit RGB colors
---cmd[[colorscheme dracula]]
-cmd[[colorscheme lunaperche]]
+cmd[[colorscheme dracula]]
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
