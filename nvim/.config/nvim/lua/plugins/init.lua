@@ -77,8 +77,14 @@ return {
     "aserowy/tmux.nvim",
     config = function() require("tmux").setup() end
   },
-  -- Find & Search LSP Tags
---  'liuchengxu/vista.vim',
+  {
+  "roobert/f-string-toggle.nvim",
+    config = function()
+      require("f-string-toggle").setup{
+	key_binding = "<leader>g"
+      }
+    end,
+  },
 
   -- Snippets
   'rafamadriz/friendly-snippets',
