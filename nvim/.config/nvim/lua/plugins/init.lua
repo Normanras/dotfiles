@@ -53,7 +53,9 @@ return {
 ------------------------------------------------------------
 -- General Functionality
 ------------------------------------------------------------
-  'stevearc/vim-arduino',
+  { 'stevearc/vim-arduino',
+    config = function() require('vim-arduino').setup {} end,
+  },
   {
     'nacro90/numb.nvim',
     config = function() require('numb').setup{
