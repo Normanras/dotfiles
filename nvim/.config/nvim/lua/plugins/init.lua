@@ -22,13 +22,6 @@ return {
   },
   { 'neovim/nvim-lspconfig' },
 
-  -- Manage all your Keymaps!
- -- {
- --   "gregorias/nvim-mapper",
- --   config = function() require("nvim-mapper").setup{} end,
- --   before = "telescope.nvim"
- -- },
-
   {
     'L3MON4D3/LuaSnip', version = "1.2.1",
       dependencies = { "friendly-snippets" },
@@ -40,6 +33,8 @@ return {
 --    },
 --      config = function() require('regexplainer').setup{} end,
 --  },
+
+  {"ellisonleao/glow.nvim", config = function() require("glow").setup() end},
   },
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp-signature-help',
@@ -53,7 +48,25 @@ return {
 ------------------------------------------------------------
 -- General Functionality
 ------------------------------------------------------------
+   {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    ft = "markdown",
+    lazy = true,
+    keys = { { "gm", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview" } },
+    config = function()
+      vim.g.mkdp_auto_close = true
+      vim.g.mkdp_open_to_the_world = false
+      vim.g.mkdp_open_ip = "127.0.0.1"
+      vim.g.mkdp_port = "8888"
+      vim.g.mkdp_browser = ""
+      vim.g.mkdp_echo_preview_url = true
+      vim.g.mkdp_page_title = "${name}"
+    end,
+  },
+
   { 'stevearc/vim-arduino'},
+  { 'sindrets/diffview.nvim' },
   {
     'nacro90/numb.nvim',
     config = function() require('numb').setup{
@@ -198,9 +211,13 @@ return {
     end
   },
 
-{ "iamcco/markdown-preview.nvim", build = "cd app && npm install", init = function() vim.g.mkdp_filetypes = {
-  "markdown" } end, ft = { "markdown" }, },
-
+--[[  { 'toppair/peek.nvim',
+      build = 'deno task --quiet build:fast',
+      config = function()
+	require('peek').setup()
+      end
+    },
+    ]]--
   -- DAP (Debug adaptor Protocol)
   'mfussenegger/nvim-dap',
 
@@ -327,7 +344,6 @@ return {
     'feline-nvim/feline.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
-  'ellisonleao/glow.nvim',
   -- Plugin that causes your code to crumble >:)
   -- 'eandrju/cellular-automaton.nvim',
 

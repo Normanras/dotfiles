@@ -1,7 +1,7 @@
 return {
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = {
- 'nvim-lua/plenary.nvim',
+     'nvim-lua/plenary.nvim',
       },
       config = function ()
 	local null_ls = require'null-ls'
@@ -10,7 +10,7 @@ return {
 	    sources = {
 	      null_ls.builtins.completion.spell,
 	      null_ls.builtins.diagnostics.codespell,
-	      null_ls.builtins.diagnostics.markdownlint.with({ extra_args = { "--disable", "MD024", "--" }
+	      null_ls.builtins.diagnostics.markdownlint.with({ extra_args = { "--disable", "MD024", "MD013", "--" }
 	      ,}),
 	      null_ls.builtins.diagnostics.ruff,
 	--      null_ls.builtins.diagnostics.pylama,

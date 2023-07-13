@@ -7,21 +7,12 @@ return {
 		local M = Mapper.map
 		local default_opts = {noremap=true, silent=true}
 
+	-- Sidebar Plugin
 	  M('n', '<leader>n', ':SidebarNvimToggle<CR>', default_opts,
 	  "Sidebar Toggle", "sidebar-toggle", "Open or Close Sidebar"
 	  )
 	  M('n', '<leader>q', ':SidebarNvimUpdate<CR>', default_opts,
 	  "Sidebar Update", "sidebar-update", "Refresh the Sidebar"
-	  )
-
-	  -- Lazy Git
-	  M('n', '<leader>lg', ":LazyGit<CR>", default_opts,
-	  "Lazy Git", "lazy-git", "Show Lazy Git"
-	  )
-
-	  -- Markdown Preview Toggle
-	  M('n', '<leader>P', ":MarkdownPreview<CR>", default_opts,
-	  "Markdown Preview", "md_preview", "Display Markdown preview in browser"
 	  )
 
 	  -- Telescope Options
@@ -37,7 +28,10 @@ return {
 	  M('n', '<leader>fe', ":Telescope file_browser<CR>", default_opts,
 	  "Telescope Files", "telescope-file-browser", "Find files and directories in telescope"
 	  )
+	  M('n', '<leader>fk', ":Telescope keymaps<CR>", default_opts,
+	  "Telescope Keymaps", "telescope-keymaps", "Easily find Keymaps using Telescope")
 
+	-- Macros for Todo Trouble
 	  M('n', '<C-t>', "@t<CR>", default_opts,
 	  "Add Todo", "todo_todo", "Add To-do/Task to the beginning of the line"
 	  )
@@ -58,7 +52,7 @@ return {
 	  "Add Warning/Error", "add_error", "Add Warning/Error tag at the beginning of the line."
 	  )
 
-	  M('n', '<leader>ce', ":TodoTrouble keywords=TODO<CR> | :resize +10<CR>", default_opts,
+	  M('n', '<leader>ce', ":TodoTrouble keywords=TODO<CR>", default_opts,
 	  "Show Todo Tags", "show_todos", "Show Todo Tags."
 	  )
 
@@ -70,6 +64,7 @@ return {
 	  "Show Warning Tags", "show_warnings", "Show Errors Tags."
 	  )
 
+	-- Formatting Keymaps
 	  M('n', '<leader>b', ":! black %<CR>", default_opts,
 	  "Black Formatting", "black_current_file", "Use Black Formatting on Current File."
 	  )
