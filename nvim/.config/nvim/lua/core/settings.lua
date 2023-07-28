@@ -24,7 +24,7 @@ opt.shadafile = ""
 opt.shell = "/bin/zsh"
 opt.updatetime = 200
 opt.cursorline = true
-g.markdown_folding = 1
+--g.markdown_folding = 1
 opt.spell=true
 opt.spelllang = 'en_us'
 cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
