@@ -25,12 +25,13 @@ return {
 
       require("luasnip.loaders.from_vscode").lazy_load()
 
-      cmp.setup {
+      cmp.setup({
 	-- Load snippet support
-	--snippet = {
-	--  expand = function(args)
-	--    luasnip.lsp_expand(args.body)
-	 -- },
+	snippet = {
+	  expand = function(args)
+	    luasnip.lsp_expand(args.body)
+	  end
+	  },
 
 	-- Completion settings
 	completion = {
@@ -73,29 +74,37 @@ return {
 	    end
 	  end,
 	},
-	snippet = {
-	  expand = function(args)
-	    require('luasnip').lsp_expand(args.body)
-	  end,
-	},
-	-- Load sources, see: https://github.com/topics/nvim-cmp
 	sources = {
-	  { name = 'nvim-lsp' },
-	  { name = 'luasnip' },
+	  { name = 'nvim-lsp', keyword_length = 1 },
+	  { name = 'luasnip', keyword_length=2 },
 	  { name = 'path' },
-	--  { name = 'buffer' },
+	  { name = 'nvim_lsp_signature_help' },
+	  { name = 'buffer', keyword_length = 3 },
 	-- { name = 'zsh' },
-	sorting = {
-		comparators = {
-			cmp.config.compare.offset,
-			cmp.config.compare.exact,
-			cmp.config.compare.score,
-			cmp.config.compare.recently_used,
-			require("cmp-under-comparator").under,
-			cmp.config.compare.kind,
-		},
 	},
-	}
-      }
+	formatting = {
+	  fields = {'menu', 'abbr', 'kind'},
+	  format = function(entry, item)
+	    local menu_icon = {
+	      nvim_lsp = 'λ',
+	      luasnip = '⋗',
+	      buffer = 'Ω',
+	      path = '',
+	    }
+	  item.menu = menu_icon[entry.source.name]
+	  return item
+	end,
+      },
+	sorting = {
+	  comparators = {
+		  cmp.config.compare.offset,
+		  cmp.config.compare.exact,
+		  cmp.config.compare.score,
+		  cmp.config.compare.recently_used,
+		  require("cmp-under-comparator").under,
+		  cmp.config.compare.kind,
+	  },
+	},
+  })
     end
 }

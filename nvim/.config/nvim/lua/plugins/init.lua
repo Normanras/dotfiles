@@ -23,22 +23,17 @@ return {
   { 'neovim/nvim-lspconfig' },
 
   {
-    'L3MON4D3/LuaSnip', version = "1.2.1",
+    'L3MON4D3/LuaSnip', version = "2.0.0",
+      build = "make install_jsregexp",
       dependencies = { "friendly-snippets" },
---  {
---    'bennypowers/nvim-regexplainer',
---    dependencies = {
---      'nvim-treesitter/nvim-treesitter',
---      'MunifTanjim/nui.nvim',
---    },
---      config = function() require('regexplainer').setup{} end,
---  },
-
-  {"ellisonleao/glow.nvim", config = function() require("glow").setup() end},
   },
+
+  {"ellisonleao/glow.nvim", config = function() require("glow").setup() end },
+
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp-signature-help',
     'lukas-reineke/cmp-under-comparator',
+
   {
     'asiryk/auto-hlsearch.nvim',
     version = "1.1.0",
