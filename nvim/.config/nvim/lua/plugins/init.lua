@@ -44,6 +44,7 @@ return {
 -- General Functionality
 ------------------------------------------------------------
 
+  { 'MaximilianLloyd/adjacent.nvim' },
   { 'stevearc/vim-arduino'},
   { 'sindrets/diffview.nvim' },
   {

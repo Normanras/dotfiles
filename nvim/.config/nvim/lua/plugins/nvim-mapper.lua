@@ -31,6 +31,9 @@ return {
 	  M('n', '<leader>fk', ":Telescope keymaps<CR>", default_opts,
 	  "Telescope Keymaps", "telescope-keymaps", "Easily find Keymaps using Telescope")
 
+	  M('n', '<leader>fa', ":Telescope adjacent<CR>", default_opts,
+	  "Telescope Adjacent", "telescope-adjacent", "Open file browser based on current buffer")
+
 	-- Macros for Todo Trouble
 	  M('n', '<C-t>', "@t<CR>", default_opts,
 	  "Add Todo", "todo_todo", "Add To-do/Task to the beginning of the line"
