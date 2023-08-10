@@ -24,7 +24,7 @@ opt.shadafile = ""
 opt.shell = "/bin/zsh"
 opt.updatetime = 200
 opt.cursorline = true
---g.markdown_folding = 1
+g.markdown_folding = 1
 opt.spell=true
 opt.spelllang = 'en_us'
 cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
@@ -37,7 +37,7 @@ opt.relativenumber = true       -- Show Current Line with Relative numbers above
 opt.showmatch = true            -- Highlight matching parenthesis
 opt.foldmethod = "syntax"       -- Enable folding (default 'foldmarker')
 opt.cc = '+1,+2,+3'		-- Line length marker at 80 columns
---opt.tw = 80
+opt.tw = 120
 opt.splitright = true           -- Vertical split to the right
 opt.splitbelow = true           -- Horizontal split to the bottom
 opt.ignorecase = true           -- Ignore case letters when search
