@@ -8,7 +8,15 @@
           ["core.defaults"] = {},
           ["core.concealer"] = {},
 	  ["core.integrations.nvim-cmp"] = {},
-	  ["core.integrations.treesitter"] = {},
+	  ["core.highlights"] = {},
+	  ["core.mode"] = {},
+	  ["core.keybinds"] = {
+	    config = {
+	      hook =  function(keybinds)
+		keybinds.remap_key("norg", "n", "<M-CR>", "<S-tab>")
+	      end,
+	    }
+	  },
 	  ["core.completion"] = {
 	    config = {
 	      engine = "nvim-cmp"
