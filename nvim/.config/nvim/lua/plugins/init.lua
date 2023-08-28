@@ -290,7 +290,7 @@ return {
                   FEAT = { icon = " ", color = "warning", alt = { "NEED", "REQUEST" } },
                   WARN = { icon = " ", color = "error", alt = { "WARNING", "ERROR" } },
                   TODO = { icon = " ", color = "hint", alt = { "TASK", "TBD" } },
-                  NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+                  RISK = { icon = " ", color = "hint", alt = { "RISK" } },
                   SENG = { icon = " ", color = "test", alt = { "SOLUTIONS", "SE", "WORKAROUND" } },
                 },
                 highlight = {
