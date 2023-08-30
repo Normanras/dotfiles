@@ -13,17 +13,10 @@
           ["core.concealer"] = {},
 	  ["core.integrations.nvim-cmp"] = {},
 	  ["core.integrations.treesitter"] = {},
-	  ["external.templates"] = {},
 	  ["core.highlights"] = {},
+	  ["core.export"] = {},
 	  ["core.mode"] = {},
 	  ["core.itero"] = {},
-	  ["core.journal"] = {
-	    config = {
-	      template_name = "template.norg",
-	      use_template = "true",
-	      workspace = "customer_notes",
-	    }
-	  },
 	  ["core.keybinds"] = {
 	    config = {
 	      hook =  function(keybinds)

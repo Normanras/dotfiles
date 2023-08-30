@@ -17,4 +17,3 @@ vim.g.localmapleader = ','
 require('lazy').setup('plugins')
 require('core/keymaps')
 require('core/settings')
-

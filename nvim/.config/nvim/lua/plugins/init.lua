@@ -65,6 +65,20 @@ return {
     options = { theme = 'palenight' }
   } end,
 },
+
+-- Nvim Tree File Manager on the Left
+{
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    require("nvim-tree").setup {}
+  end,
+},
+
   -- Tmux Navigation
   {
     "aserowy/tmux.nvim",
@@ -89,8 +103,6 @@ return {
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
 
-  -- Nvim Tree File Manager on the Left
-  'nvim-tree/nvim-tree.lua',
 
   -- Trouble Shows Errors with Files.
   {
@@ -189,23 +201,6 @@ return {
       vim.g.mkdp_page_title = "${name}"
     end,
   },
- {
-    'jakewvincent/mkdnflow.nvim',
-    config = function()
-        require('mkdnflow').setup({
-          mappings = {
-            MkdnToggleToDo = {{'i', 'n'}, '<C-Space>'},
-            MkdnNewListItem = {{'i'}, '<CR>'},
-            MkdnEnter = {{'n'}, '<CR>'},
-            MkdnTableNextCell = false,
-            MkdnTab = {{'i',}, '<Tab>'},
-            MkdnSTab = {{'i'}, '<S-Tab>'},
-            MkdnFollowLink = {'n', '<leader>p'}
-          },
-   wrap = true
-        })
-    end
-  },
  --[[
   { 'toppair/peek.nvim',
       build = 'deno task --quiet build:fast',
@@ -287,6 +282,7 @@ return {
                   -- signs = false, -- configure signs for some keywords individually
                   },
                   DONE = { icon = " ", color = "info" },
+		  IN_PROG = { icon = "󰇘", color = "default" },
                   FEAT = { icon = " ", color = "warning", alt = { "NEED", "REQUEST" } },
                   WARN = { icon = " ", color = "error", alt = { "WARNING", "ERROR" } },
                   TODO = { icon = " ", color = "hint", alt = { "TASK", "TBD" } },
