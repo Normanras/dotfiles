@@ -1,4 +1,4 @@
-return {
+[[--return {
   "folke/styler.nvim",
   config = function()
     require("styler").setup({
@@ -12,3 +12,4 @@ return {
     })
   end,
 }
+--]]

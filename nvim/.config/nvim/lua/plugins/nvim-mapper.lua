@@ -15,6 +15,11 @@ return {
 	  "Sidebar Update", "sidebar-update", "Refresh the Sidebar"
 	  )
 
+	  -- Nvim Tree Plugin
+	  M('n', '<leader>v', ':NvimTreeToggle<CR>', default_opts,
+	  "Nvim Tree Sidebar", "nvim-tree-toggle", "OpenClose NvimTree Sidebar"
+	  )
+
 	  -- Telescope Options
 	  M('n', '<leader>ff', ':Telescope find_files<CR>', default_opts,
 	  "Find Files", "find-files", "Find Files in Telescope pop-up"

@@ -1,6 +1,5 @@
 return {
 ----------------------------------------------------------------
-
 -- LSP and Autocomplete Plugins
 -- They should be pulled first!
 -----------------------------------------------------------------
@@ -332,6 +331,18 @@ return {
   },
   { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = true, priority = 1000 },
   'Bekaboo/deadcolumn.nvim',
+  -- {
+  --   'm4xshen/smartcolumn.nvim',
+  --       config = function()
+  --         require("smartcolumn").setup{
+  --    config = {
+  --     colorcolumn = "100",
+  --     disabled_filetypes = { "help" },
+  --     custom_colorcolumn = {},
+  --   },
+  -- }
+  --     end
+  -- },
   {
     'feline-nvim/feline.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
