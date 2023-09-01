@@ -5,15 +5,19 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 plugins=(
-    zsh-autosuggestions
-    git
-    wakatime
-    brew
-    npm
-    z
-    zsh-syntax-highlighting
-    vi-mode
+    zsh-autosuggestions,
+    git,
+    wakatime,
+    brew,
+    npm,
+    z,
+    zsh-syntax-highlighting,
+    vi-mode,
 )
+
+# Zsh Autosuggestion Config
+source ~/.dotfiles/zsh/zsh-autosuggestions/
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 
 # User configuration
 

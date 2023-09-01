@@ -351,5 +351,15 @@ return {
   -- 'eandrju/cellular-automaton.nvim',
 
 -- Wakatime Tracking
-  'wakatime/vim-wakatime'
-  }
+  'wakatime/vim-wakatime',
+
+----------------------------------------------
+--- Custom Plugins and Tests
+----------------------------------------------
+  {
+    dir = '/Users/normrasmussen/Documents/Projects/tasksPlugin.nvim/',
+    dev = true,
+    name = "Mkdn Tasks (DEV)",
+  },
+}
+

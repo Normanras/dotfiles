@@ -10,12 +10,13 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
     })
   end
 vim.opt.rtp:prepend(lazypath)
-require('lazy').setup('plugins')
-
 vim.g.mapleader = ','
 vim.g.localmapleader = ','
 vim.opt.textwidth = 85
 vim.opt.colorcolumn = '+2'
+
+require('lazy').setup('plugins')
+
 
 -----------------------------------------------------------
 -- General Neovim settings and configuration
