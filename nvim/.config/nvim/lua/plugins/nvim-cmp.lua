@@ -36,7 +36,7 @@ return {
 	-- Completion settings
 	completion = {
 	  --completeopt = 'menu,menuone,noselect'
-	  keyword_length = 2
+	  keyword_length = 1
 	},
 
 	-- Key mapping
@@ -76,11 +76,10 @@ return {
 	},
 	sources = {
 	  { name = 'nvim-lsp', keyword_length = 1 },
-	  { name = 'luasnip', keyword_length=2 },
+	  { name = 'luasnip', keyword_length = 1 },
 	  { name = 'path' },
 	  { name = 'nvim_lsp_signature_help' },
-	  { name = 'buffer', keyword_length = 3 },
-	  { name = 'neorg' },
+	  { name = 'buffer', keyword_length = 1 },
 	},
 	formatting = {
 	  fields = {'menu', 'abbr', 'kind'},
