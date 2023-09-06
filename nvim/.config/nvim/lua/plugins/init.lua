@@ -12,19 +12,25 @@ return {
             package_pending = "➜",
             package_uninstalled = "✗"
         }
-    }
-})
-  end,
-},
-  { 'williamboman/mason-lspconfig.nvim',
-    config = function() require("mason-lspconfig").setup{} end,
+      }
+  })
+    end,
   },
-  { 'neovim/nvim-lspconfig' },
+    { 'williamboman/mason-lspconfig.nvim',
+      config = function() require("mason-lspconfig").setup{} end,
+    },
+    { 'neovim/nvim-lspconfig' },
 
-  {
+    {
     'L3MON4D3/LuaSnip', version = "2.0.0",
       build = "make install_jsregexp",
       dependencies = { "friendly-snippets" },
+      config = function()
+	require("luasnip.loaders.from_vscode").lazy_load()
+	require("luasnip.loaders.from_vscode").lazy_load({
+	  paths = { "~/.dotfiles/nvim/.config/nvim/lua/custom_snippets/" }
+	})
+      end,
   },
 
   {"ellisonleao/glow.nvim", config = function() require("glow").setup() end },
@@ -74,7 +80,18 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
-    require("nvim-tree").setup {}
+    require("nvim-tree").setup({
+        sort_by = "case_sensitive",
+	view = {
+	  width = 30,
+	},
+	renderer = {
+	  group_empty = true,
+	},
+	filters = {
+	  dotfiles = true,
+	},
+      })
   end,
 },
 
@@ -247,7 +264,6 @@ return {
 },
 
 ---------------------------------------------------------
-
 -- Text, Icons, Symbols
 ----------------------------------------------------------
 
@@ -257,10 +273,15 @@ return {
       require('symbols-outline').setup()
     end
   },
-
+  {
+  "j-hui/fidget.nvim",
+  tag = "legacy",
+  event = "LspAttach",
+  opts = {
+    -- options
+  },
+},
   'lukas-reineke/indent-blankline.nvim',
-  'folke/lsp-colors.nvim',
-  'Mofiqul/dracula.nvim',
   'karb94/neoscroll.nvim',
 
   -- Allow Popups for Telescope etc
@@ -311,12 +332,11 @@ return {
   },
 
 -----------------------------------------------------------
-
 -- Various Color Schemes, Dashboard, etc
 -----------------------------------------------------------
 
- {'ray-x/starry.nvim', setup=function()
- end},
+  'Mofiqul/dracula.nvim',
+  'ray-x/starry.nvim',
   'rose-pine/neovim',
   'EdenEast/nightfox.nvim',
   'catppuccin/nvim',

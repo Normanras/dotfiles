@@ -29,7 +29,7 @@ return {
 	-- Load snippet support
 	snippet = {
 	  expand = function(args)
-	    luasnip.lsp_expand(args.body)
+	    require('luasnip').lsp_expand(args.body)
 	  end
 	  },
 
@@ -37,6 +37,19 @@ return {
 	completion = {
 	  --completeopt = 'menu,menuone,noselect'
 	  keyword_length = 1
+	},
+	window = {
+	  completion = {
+	    winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+	    col_offset = -3,
+	    side_padding = 0,
+	    border = 'rounded',
+	    scrollbar = '+',
+	  },
+	  documentation = {
+	    border = 'rounded',
+	    scrollbar = '|',
+	  }
 	},
 
 	-- Key mapping
@@ -78,6 +91,7 @@ return {
 	  { name = 'nvim-lsp', keyword_length = 1 },
 	  { name = 'luasnip', keyword_length = 1 },
 	  { name = 'path' },
+	  { name = 'calc' },
 	  { name = 'nvim_lsp_signature_help' },
 	  { name = 'buffer', keyword_length = 1 },
 	},
@@ -104,6 +118,12 @@ return {
 		  cmp.config.compare.kind,
 	  },
 	},
-  })
+      })
+        -- Set up lspconfig.
+	local capabilities = require('cmp_nvim_lsp').default_capabilities()
+	-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+	require'lspconfig'.pylsp.setup {
+	  capabilities = capabilities
+	}
     end
 }

@@ -3,12 +3,35 @@ return {
    config = function()
       -- Setup language servers.
       local lspconfig = require('lspconfig')
-      lspconfig.pyright.setup {}
+	lspconfig.pyright.setup {}
+	lspconfig.pylsp.setup {}
 	-- Server-specific settings. See `:help lspconfig-setup`
 	settings = {
-	  ['pyright'] = {},
-	},
-      }
+	  ['pyright'] = {
+	    cmd = {"pyright-langserver", "--stdio"},
+	    root_dir = function(fname)
+	      local root_files = {
+		'pyproject.toml',
+		'setup.py',
+		'setup.cfg',
+		'requirements.txt',
+		'Pipfile',
+	      }
+	      return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
+	    end,
+	    settings = {
+	      pylsp = {
+	      configurationSources = {"pylint"},
+	      plugins = {
+		pylint = { enabled = true },
+		flake8 = { enabled = false },
+		pycodestyle = { enabled = false },
+		pyflakes = { enabled = false },
+		    }
+		  }
+		}
+	      }
+	    },
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)

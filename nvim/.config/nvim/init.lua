@@ -135,8 +135,15 @@ function _G.trim_trailing_whitespaces()
     end
 end
 
+-- Correctly set $VIRTUAL_ENV for Python venvs.
+if vim.fn.exists("$VIRTUAL_ENV") == 1 then
+    vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system("pyenv which python3 | head -n2 | tail -n1"), "\n", "", "g")
+else
+    vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system("which python3"), "\n", "", "g")
+end
+
 --  see https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
---[[vim.cmd[[
+vim.cmd[[
 	highlight! link CmpItemMenu Comment
 	" gray
 	highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
@@ -155,7 +162,6 @@ end
 	highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 	highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
       ]]
---]]
 
 require('core/keymaps')
 vim.cmd[[colorscheme moonlight]]
