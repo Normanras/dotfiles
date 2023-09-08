@@ -1,34 +1,13 @@
-
-# Path to your oh-my-zsh installation.
-# export ZSH="$HOME/.oh-my-zsh"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-#plugins=(
-#    zsh-autosuggestions,
-#    git,
-#    wakatime,
-#    brew,
-#    npm,
- #   z,
-#    zsh-syntax-highlighting,
-#    vi-mode,
-#)
 plug "jeffreytse/zsh-vi-mode"
 plug "wbingli/zsh-wakatime"
-
-
-# Zsh Autosuggestion Config
-#source ~/.dotfiles/zsh/zsh-autosuggestions/
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
-plug "zap-zsh/supercharge"
+# plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-autosuggestions"
-
-# Example install of a plugin pinned to specifc commit or branch, just pass the git reference
 plug "zsh-users/zsh-syntax-highlighting" "122dc46"
 
 # User configuration
-
 export DOT="~/.dotfiles"
 alias vim='vim -S ~/.vimrc'
 alias nvim='nvim'
@@ -71,10 +50,10 @@ alias nvim=nvimvenv
 #bindkey -s ^a "nvims\n"
 
 # source /Users/normrasmussen/.docker/init-zsh.sh || true # Added by Docker Desktop
-
 # export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 eval "$(starship init zsh)"
+source ~/.dotfiles/zsh/.zshrc

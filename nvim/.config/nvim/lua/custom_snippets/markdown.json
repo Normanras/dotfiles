@@ -1,0 +1,7 @@
+{
+    "todays-date": {
+        "prefix": "today",
+        "body": ["${CURRENT_MONTH}-${CURRENT_DATE}-${CURRENT_YEAR}"],
+        "description": "Put the date in (Y-m-D) format"
+    }
+}

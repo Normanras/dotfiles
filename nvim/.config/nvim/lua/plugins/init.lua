@@ -22,14 +22,19 @@ return {
     { 'neovim/nvim-lspconfig' },
 
     {
-    'L3MON4D3/LuaSnip', version = "2.0.0",
+    'L3MON4D3/LuaSnip', version = "2.*",
       build = "make install_jsregexp",
       dependencies = { "friendly-snippets" },
       config = function()
-	require("luasnip.loaders.from_vscode").lazy_load()
-	require("luasnip.loaders.from_vscode").lazy_load({
-	  paths = { "~/.dotfiles/nvim/.config/nvim/lua/custom_snippets/" }
-	})
+		require("luasnip").setup({
+		  history = true,
+		  delete_check_events = "TextChanged",
+		})
+		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_vscode").load({
+			paths = {
+  "~/.dotfiles/nvim/.config/nvim/lua/custom_snippets/" }
+		  })
       end,
   },
 
@@ -90,6 +95,9 @@ return {
 	},
 	filters = {
 	  dotfiles = true,
+	},
+	diagnostics = {
+	  enable = true,
 	},
       })
   end,

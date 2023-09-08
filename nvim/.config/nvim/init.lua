@@ -3,7 +3,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
     vim.fn.system({
       "git",
       "clone",
-      "--filter=blob:none",
+      "--filteer=blob:none",
       "https://github.com/folke/lazy.nvim.git",
       "--branch=stable", -- latest stable release
       lazypath,
@@ -12,11 +12,10 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ','
 vim.g.localmapleader = ','
-vim.opt.textwidth = 85
+--- vim.opt.textwidth = 85
 vim.opt.colorcolumn = '+2'
 
 require('lazy').setup('plugins')
-
 
 -----------------------------------------------------------
 -- General Neovim settings and configuration
@@ -45,7 +44,7 @@ opt.shell = "/bin/zsh"
 opt.updatetime = 200
 opt.cursorline = true
 g.markdown_folding = 1
--- opt.spell=true
+opt.spell=true
 opt.spelllang = 'en_us'
 cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
 vim.api.nvim_set_hl(0, "ColorColumn", {guibg=DarkOrchid1})
@@ -90,15 +89,19 @@ g.glow_border = 'rounded'
 g.glow_width = 120
 g.glow_use_pager = true
 g.glow_style = 'dark'
+
 -----------------------------------------------------------
--- MKDX Settings, mkdx#settings.
+-- AutoCmd and Additional Function Settings.
 -----------------------------------------------------------
 -- 2 spaces for selected filetypes
-cmd [[
-  autocmd FileType md,liquid,xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=8 noexpandtab
-]]
+vim.cmd [[
+  autocmd FileType md,liquid,xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=4 noexpandtab
+  ]]
+vim.cmd [[ autocmd FileType python set textwidth=110 ]]
+vim.cmd [[ autocmd FileType lua set textwidth=80 ]]
+vim.cmd [[ autocmd FileType markdown,text set textwidth=200 ]]
 
-
+--[[
 local disabled_built_ins = {
     "netrw",
     "netrwPlugin",
@@ -122,11 +125,10 @@ local disabled_built_ins = {
 
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
-end
-
---[[
-Deletes all trailing whitespaces in a file if it's not binary nor a diff.
+    end
 ]]--
+
+-- Deletes all trailing whitespaces in a file if it's not binary nor a diff.
 function _G.trim_trailing_whitespaces()
     if not o.binary and o.filetype ~= 'diff' then
         local current_view = fn.winsaveview()
@@ -143,7 +145,7 @@ else
 end
 
 --  see https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
-vim.cmd[[
+--[[vim.cmd[[
 	highlight! link CmpItemMenu Comment
 	" gray
 	highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
@@ -162,6 +164,7 @@ vim.cmd[[
 	highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 	highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
       ]]
+      --]]
 
 require('core/keymaps')
-vim.cmd[[colorscheme moonlight]]
+vim.cmd[[colorscheme wildcharm]]

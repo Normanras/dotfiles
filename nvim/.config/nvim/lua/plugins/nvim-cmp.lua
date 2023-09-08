@@ -8,6 +8,7 @@ return {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-calc',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'f3fora/cmp-spell',
@@ -88,12 +89,12 @@ return {
 	  end,
 	},
 	sources = {
-	  { name = 'nvim-lsp', keyword_length = 1 },
-	  { name = 'luasnip', keyword_length = 1 },
+	  { name = 'nvim_lsp', },
+	  { name = 'luasnip', },
 	  { name = 'path' },
 	  { name = 'calc' },
 	  { name = 'nvim_lsp_signature_help' },
-	  { name = 'buffer', keyword_length = 1 },
+	  { name = 'buffer' },
 	},
 	formatting = {
 	  fields = {'menu', 'abbr', 'kind'},
@@ -103,6 +104,8 @@ return {
 	      luasnip = '⋗',
 	      buffer = 'Ω',
 	      path = '',
+	      calc = '󰃬',
+	      nvim_lsp_signature_help = '󰷼',
 	    }
 	  item.menu = menu_icon[entry.source.name]
 	  return item
@@ -122,7 +125,7 @@ return {
         -- Set up lspconfig.
 	local capabilities = require('cmp_nvim_lsp').default_capabilities()
 	-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-	require'lspconfig'.pylsp.setup {
+	require'lspconfig'.pyright.setup {
 	  capabilities = capabilities
 	}
     end
