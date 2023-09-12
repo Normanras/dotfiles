@@ -1,54 +1,31 @@
-session_name: Northpass
+session_name: Work
 windows:
-- layout: c39e,229x45,0,0,1
+- layout: b7be,192x52,0,0,1
   options: {}
   panes:
   - focus: 'true'
-    shell_command: zsh
-  start_directory: /Users/normrasmussen/Documents/Work
+    shell_command: nvim
+  start_directory: /Users/normrasmussen/Documents/Work/CustomerNotes
   window_name: notes
-- focus: 'true'
-  layout: c39f,229x45,0,0,2
+- layout: b7bf,192x52,0,0,2
   options: {}
   panes:
   - focus: 'true'
-    shell_command: Python
-  start_directory: /Users/normrasmussen/.dotfiles/tmuxp
+    shell_command: nvim
+  start_directory: /Users/normrasmussen/Documents/Work/Custom_Templates
   window_name: templates
-- layout: 40b3,229x45,0,0[229x42,0,0,3,229x2,0,43,4]
+- layout: 08ba,192x52,0,0[192x40,0,0,4,192x11,0,41,11]
   options: {}
   panes:
   - focus: 'true'
     shell_command:
-    - cd /Users/normrasmussen/Documents/Work/Scripts/GoogleScripts/Luminate_API_Exam
-    - zsh
-  - shell_command:
-    - cd /Users/normrasmussen/Documents/Work/Scripts/API_Tests
-    - zsh
+    - cd /Users/normrasmussen/Documents/Work/Scripts
   window_name: scripts
-- layout: c3c2,196x45,0,0,5
+- focus: 'true'
+  layout: 9c3d,192x52,0,0[192x41,0,0,5,192x10,0,42,16]
   options: {}
   panes:
-  - focus: 'true'
-    shell_command: zsh
-  start_directory: /Users/normrasmussen/.dotfiles
-  window_name: dots
-- layout: 60a9,229x45,0,0[229x42,0,0,6,229x2,0,43,18]
-  options: {}
-  panes:
-  - focus: 'true'
-    shell_command: zsh
-  - zsh
-  start_directory: /Users/normrasmussen/Documents/Projects/nginx_docs
-  window_name: nginx
-- layout: 0ceb,229x45,0,0{115x45,0,0,11,113x45,116,0,14}
-  options: {}
-  panes:
-  - focus: 'true'
-    shell_command:
-    - cd /Users/normrasmussen/Documents/Projects
-    - zsh
   - shell_command:
-    - cd /Users/normrasmussen
-    - zsh
-  window_name: zsh
+    - cd /Users/normrasmussen/.dotfiles
+  - focus: 'true'
+  window_name: dots

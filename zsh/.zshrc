@@ -1,11 +1,13 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
-plug "jeffreytse/zsh-vi-mode"
-plug "wbingli/zsh-wakatime"
-# plug "zap-zsh/supercharge"
-plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-syntax-highlighting" "122dc46"
+# autoload -Uz compinit; compinit; _comp_options+=(globdots);
 
 # User configuration
 export DOT="~/.dotfiles"
@@ -18,21 +20,21 @@ export VISUAL='nvim'
 export PYTHONPATH="/opt/homebrew/bin/python3:$PYTHONPATH"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # Function to Correctly Source $VIRTUAL_ENV for Neovim
 function nvimvenv {
-  if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
-    source "$VIRTUAL_ENV/bin/activate"
-    command nvim "$@"
-    deactivate
-  else
-    command nvim "$@"
-  fi
+ if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
+   source "$VIRTUAL_ENV/bin/activate"
+   command nvim "$@"
+   deactivate
+ else
+   command nvim "$@"
+ fi
 }
 
 alias nvim=nvimvenv
-
 # alias nvim-minimal="NVIM_APPNAME=Minivim nvim"
 # alias nvim-arduino="NVIM_APPNAME=Arduino nvim"
 
@@ -50,10 +52,12 @@ alias nvim=nvimvenv
 #bindkey -s ^a "nvims\n"
 
 # source /Users/normrasmussen/.docker/init-zsh.sh || true # Added by Docker Desktop
-# export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
-eval "$(starship init zsh)"
-source ~/.dotfiles/zsh/.zshrc
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

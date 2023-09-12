@@ -1,0 +1,8 @@
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# User configuration
+export DOT="~/.dotfiles"
+alias vim='vim -S ~/.vimrc'
+alias nvim='nvim'
+source ~/.dotfiles/zsh/.zshrc
