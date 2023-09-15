@@ -378,6 +378,28 @@ return {
   -- Plugin that causes your code to crumble >:)
   -- 'eandrju/cellular-automaton.nvim',
 
+ {
+    "wookayin/semshi",
+    ft = "python",
+    build = ":UpdateRemotePlugins",
+    config = function()
+      vim.api.nvim_set_hl(0, "semshiLocal", { ctermfg=209, fg="#80aa9e" } )
+      vim.api.nvim_set_hl(0, "semshiGlobal", { ctermfg=214, fg="#d3869b" } )
+      vim.api.nvim_set_hl(0, "semshiImported", { ctermfg=214, fg="#8bba7f", cterm=bold, gui=bold } )
+      vim.api.nvim_set_hl(0, "semshiParameter", { ctermfg=75,  fg="#8bba7f" } )
+      vim.api.nvim_set_hl(0, "semshiParameterUnused", { ctermfg=117, fg="#34381b", cterm=underline, gui=underline} )
+      vim.api.nvim_set_hl(0, "semshiFree", { ctermfg=218, fg="#e9b143"} )
+      vim.api.nvim_set_hl(0, "semshiBuiltin", { ctermfg=207, fg="#f2594b"} )
+      vim.api.nvim_set_hl(0, "semshiAttribute", { ctermfg=49,  fg="#3b4439"} )
+      vim.api.nvim_set_hl(0, "semshiSelf", { ctermfg=249, fg="#db4740"} )
+      vim.api.nvim_set_hl(0, "semshiUnresolved", { ctermfg=226, fg="#f28534", cterm=underline, gui=underline} )
+      vim.api.nvim_set_hl(0, "semshiSelected", { ctermfg=231, fg="#ffffff", ctermbg=161, bg="#4c3432"} )
+      vim.api.nvim_set_hl(0, "semshiErrorSign", { ctermfg=231, fg="#ffffff", ctermbg=160, bg="#402120"} )
+      vim.api.nvim_set_hl(0, "semshiErrorChar", { ctermfg=231, fg="#ffffff", ctermbg=160, bg="#402120"} )
+      vim.cmd([[sign define semshiError text=E> texthl=semshiErrorSign]])
+    end
+  },
+
 -- Wakatime Tracking
   'wakatime/vim-wakatime',
 
