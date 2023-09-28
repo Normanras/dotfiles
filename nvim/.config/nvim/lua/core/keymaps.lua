@@ -40,6 +40,10 @@ map('n', '<leader>fa', ':Telescope adjacent<CR>', default_opts)
 map('n', '<leader>b', ':! black %<CR>', default_opts)
 map('n', '<leader>m', ':! markdownlint -f %<CR>', default_opts)
 
+-- Terminal
+map('n', '<C-t>', ':ToggleTerm direction=float<CR>', default_opts)
+map('t', '<C-n>', '<C-\\><C-n><CR>', default_opts) -- Exit Insert Mode Faster
+
 ------------------------------------------------
 -- Old Keymaps from Nvim-Mapper (Sunsetted)
 ------------------------------------------------

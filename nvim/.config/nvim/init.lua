@@ -79,7 +79,7 @@ opt.termguicolors = true      -- Enable 24-bit RGB colors
 -----------------------------------------------------------
 opt.expandtab = true            -- Use spaces instead of tabs
 opt.shiftwidth = 4              -- Shift 4 spaces when tab
-opt.tabstop = 4                 -- 1 tab == 4 spaces
+opt.tabstop = 2                 -- 1 tab == 4 spaces
 opt.smartindent = true          -- Autoindent new lines
 -----------------------------------------------------------
 -- Glow Settings
@@ -99,7 +99,7 @@ vim.cmd [[
   ]]
 vim.cmd [[ autocmd FileType python set textwidth=110 ]]
 vim.cmd [[ autocmd FileType lua set textwidth=80 ]]
-vim.cmd [[ autocmd FileType markdown,text set textwidth=200 ]]
+vim.cmd [[ autocmd FileType markdown,text set textwidth=125 ]]
 
 --[[
 local disabled_built_ins = {
@@ -167,4 +167,4 @@ end
       --]]
 
 require('core/keymaps')
-vim.cmd[[colorscheme wildcharm]]
+vim.cmd[[colorscheme tol]]

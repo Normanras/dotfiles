@@ -71,9 +71,16 @@ return {
   {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function() require('lualine').setup{
-    options = { theme = 'palenight' }
-  } end,
+  config = function() require('lualine').setup({
+    options = {
+	  theme = 'material',
+	  always_divide_middle = false,
+	},
+	sections = {
+	  lualine_x = { "encoding", { "fileformat", symbols = { unix = "" } }, "filetype" },
+	},
+})
+  end,
 },
 
 -- Nvim Tree File Manager on the Left
@@ -150,7 +157,9 @@ return {
 
 -- Top Right Notify Pop Up
   'rcarriga/nvim-notify',
-  {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}},
+  {'akinsho/toggleterm.nvim', version = "*", opts = {
+	direction = 'float',
+  }},
 
 ------------------------------------------------------------
 -- echasnovski's Minis get a section of their own...
@@ -359,25 +368,12 @@ return {
   },
   { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = true, priority = 1000 },
   'Bekaboo/deadcolumn.nvim',
-  -- {
-  --   'm4xshen/smartcolumn.nvim',
-  --       config = function()
-  --         require("smartcolumn").setup{
-  --    config = {
-  --     colorcolumn = "100",
-  --     disabled_filetypes = { "help" },
-  --     custom_colorcolumn = {},
-  --   },
-  -- }
-  --     end
-  -- },
   {
-    'feline-nvim/feline.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-  },
-  -- Plugin that causes your code to crumble >:)
-  -- 'eandrju/cellular-automaton.nvim',
-
+        "dustypomerleau/tol.nvim",
+        lazy = false, -- load the colorscheme at startup
+        priority = 1000, -- load colorscheme first
+        config = true,
+    },
  {
     "wookayin/semshi",
     ft = "python",

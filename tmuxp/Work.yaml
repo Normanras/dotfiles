@@ -1,28 +1,27 @@
 session_name: Work
 windows:
-- layout: bf7e,144x54,0,0,1
-  options: {}
-  panes:
-  - focus: 'true'
-    shell_command: nvim
-  start_directory: /Users/normrasmussen/Documents/Work
-  window_name: notes
-- focus: 'true'
-  layout: beff,143x54,0,0,2
-  options: {}
-  panes:
-  - focus: 'true'
-    shell_command: Python
-  start_directory: /Users/normrasmussen/Documents/Work/Custom_Templates
-  window_name: templates
-- layout: bf85,144x54,0,0,8
+- layout: ba3e,151x53,0,0,1
   options: {}
   panes:
   - focus: 'true'
     shell_command: zsh
+  start_directory: /Users/normrasmussen/Documents/Work
+  window_name: notes
+- layout: c1ff,149x54,0,0,2
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /Users/normrasmussen/Documents/Work/Custom_Templates
+  window_name: templates
+- layout: ba40,151x53,0,0,3
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: nvim
   start_directory: /Users/normrasmussen/Documents/Work/Scripts
   window_name: scripts
-- layout: 775a,144x54,0,0[144x43,0,0,4,144x10,0,44,5]
+- layout: e469,177x53,0,0[177x42,0,0,4,177x10,0,43,5]
   options: {}
   panes:
   - focus: 'true'
@@ -33,10 +32,24 @@ windows:
     - cd /Users/normrasmussen
     - zsh
   window_name: dots
-- layout: bf03,143x54,0,0,6
+- focus: 'true'
+  layout: 5cf6,171x53,0,0[171x36,0,0,7,171x16,0,37{85x16,0,37,14,85x16,86,37,16}]
+  options: {}
+  panes:
+  - shell_command:
+    - cd /Users/normrasmussen/Documents/Projects/hugo_blog/rsmsn_blog
+    - nvim
+  - focus: 'true'
+    shell_command:
+    - cd /Users/normrasmussen/Desktop
+  - shell_command:
+    - cd /Users/normrasmussen/Documents/Projects/hugo_blog/rsmsn_blog
+    - zsh
+  window_name: hugo
+- layout: 5d96,171x53,0,0,17
   options: {}
   panes:
   - focus: 'true'
     shell_command: zsh
-  start_directory: /Users/normrasmussen/Documents/Projects/hugo_blog
-  window_name: hugo
+  start_directory: /Users/normrasmussen
+  window_name: zsh
