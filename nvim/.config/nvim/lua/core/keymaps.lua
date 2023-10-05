@@ -35,6 +35,7 @@ map('n', '<leader>fb', ':Telescope buffers<CR>', default_opts)
 map('n', '<leader>fe', ':Telescope file_browser<CR>', default_opts)
 map('n', '<leader>fk', ':Telescope keymaps<CR>', default_opts)
 map('n', '<leader>fa', ':Telescope adjacent<CR>', default_opts)
+map('n', '<leader>cb', ':Telescope current_buffer_fuzzy_find<CR>', default_opts)
 
 -- Formatting
 map('n', '<leader>b', ':! black %<CR>', default_opts)

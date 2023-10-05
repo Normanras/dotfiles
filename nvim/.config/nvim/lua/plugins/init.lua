@@ -263,8 +263,6 @@ return {
    "git",
    "symbols",
    "diagnostics",
-   "files",
-   "todos",
      },
  todos = {
    initially_closed = false, -- whether the groups should be initially closed on start. You can manually open/close groups later.
