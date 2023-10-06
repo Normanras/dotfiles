@@ -57,6 +57,7 @@ return {
   { 'MaximilianLloyd/adjacent.nvim' },
   { 'stevearc/vim-arduino'},
   { 'sindrets/diffview.nvim' },
+  { 'skwee357/nvim-prose' },
   {
     'nacro90/numb.nvim',
     config = function() require('numb').setup{
