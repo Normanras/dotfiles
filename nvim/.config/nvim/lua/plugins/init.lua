@@ -20,7 +20,10 @@ return {
       config = function() require("mason-lspconfig").setup{} end,
     },
     { 'neovim/nvim-lspconfig' },
-
+	{
+	'hinell/lsp-timeout.nvim',
+	dependencies={ "neovim/nvim-lspconfig" }
+    },
     {
     'L3MON4D3/LuaSnip', version = "2.*",
       build = "make install_jsregexp",
