@@ -40,9 +40,6 @@ return {
 		  })
       end,
   },
-
-  {"ellisonleao/glow.nvim", config = function() require("glow").setup() end },
-
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp-signature-help',
     'lukas-reineke/cmp-under-comparator',
@@ -58,9 +55,7 @@ return {
 ------------------------------------------------------------
 
   { 'MaximilianLloyd/adjacent.nvim' },
-  { 'stevearc/vim-arduino'},
   { 'sindrets/diffview.nvim' },
-  { 'skwee357/nvim-prose' },
   {
     'nacro90/numb.nvim',
     config = function() require('numb').setup{
@@ -114,11 +109,6 @@ return {
   end,
 },
 
-  -- Tmux Navigation
-  {
-    "aserowy/tmux.nvim",
-    config = function() require("tmux").setup() end
-  },
   {
   "roobert/f-string-toggle.nvim",
     config = function()
@@ -218,34 +208,6 @@ return {
     end
   },
 
------------------------------------------------------------
--- Markdown Plugins
-------------------------------------------------------------
-
-   {
-    "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install",
-    ft = "markdown",
-    lazy = true,
-    keys = { { "gm", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview" } },
-    config = function()
-      vim.g.mkdp_auto_close = true
-      vim.g.mkdp_open_to_the_world = false
-      vim.g.mkdp_open_ip = "127.0.0.1"
-      vim.g.mkdp_port = "8888"
-      vim.g.mkdp_browser = ""
-      vim.g.mkdp_echo_preview_url = true
-      vim.g.mkdp_page_title = "${name}"
-    end,
-  },
- --[[
-  { 'toppair/peek.nvim',
-      build = 'deno task --quiet build:fast',
-      config = function()
-	require('peek').setup()
-      end
-    },
-    ]]--
   -- DAP (Debug adaptor Protocol)
   'mfussenegger/nvim-dap',
 
@@ -345,10 +307,10 @@ return {
   -- Various telescopes
   'nvim-telescope/telescope-file-browser.nvim',
 
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make'
-  },
+  --{
+  --  'nvim-telescope/telescope-fzf-native.nvim',
+  --  build = 'make'
+  --},
 
 -----------------------------------------------------------
 -- Various Color Schemes, Dashboard, etc
@@ -376,27 +338,6 @@ return {
         priority = 1000, -- load colorscheme first
         config = true,
     },
- {
-    "wookayin/semshi",
-    ft = "python",
-    build = ":UpdateRemotePlugins",
-    config = function()
-      vim.api.nvim_set_hl(0, "semshiLocal", { ctermfg=209, fg="#80aa9e" } )
-      vim.api.nvim_set_hl(0, "semshiGlobal", { ctermfg=214, fg="#d3869b" } )
-      vim.api.nvim_set_hl(0, "semshiImported", { ctermfg=214, fg="#8bba7f", cterm=bold, gui=bold } )
-      vim.api.nvim_set_hl(0, "semshiParameter", { ctermfg=75,  fg="#8bba7f" } )
-      vim.api.nvim_set_hl(0, "semshiParameterUnused", { ctermfg=117, fg="#34381b", cterm=underline, gui=underline} )
-      vim.api.nvim_set_hl(0, "semshiFree", { ctermfg=218, fg="#e9b143"} )
-      vim.api.nvim_set_hl(0, "semshiBuiltin", { ctermfg=207, fg="#f2594b"} )
-      vim.api.nvim_set_hl(0, "semshiAttribute", { ctermfg=49,  fg="#3b4439"} )
-      vim.api.nvim_set_hl(0, "semshiSelf", { ctermfg=249, fg="#db4740"} )
-      vim.api.nvim_set_hl(0, "semshiUnresolved", { ctermfg=226, fg="#f28534", cterm=underline, gui=underline} )
-      vim.api.nvim_set_hl(0, "semshiSelected", { ctermfg=231, fg="#ffffff", ctermbg=161, bg="#4c3432"} )
-      vim.api.nvim_set_hl(0, "semshiErrorSign", { ctermfg=231, fg="#ffffff", ctermbg=160, bg="#402120"} )
-      vim.api.nvim_set_hl(0, "semshiErrorChar", { ctermfg=231, fg="#ffffff", ctermbg=160, bg="#402120"} )
-      vim.cmd([[sign define semshiError text=E> texthl=semshiErrorSign]])
-    end
-  },
 
 -- Wakatime Tracking
   'wakatime/vim-wakatime',
@@ -404,10 +345,5 @@ return {
 ----------------------------------------------
 --- Custom Plugins and Tests
 ----------------------------------------------
-  {
-    dir = '/Users/normrasmussen/Documents/Projects/tasksPlugin.nvim/',
-    dev = true,
-    name = "Mkdn Tasks (DEV)",
-  },
 }
 

@@ -12,8 +12,8 @@ return {
 	  -- require('nvim-treesitter.install').update({ with_sync = true })
       -- A list of parser names, or "all"
 	  ensure_installed = {
-		'bash', 'css', 'html', 'javascript', 'json', 'lua', 'python',
-		'vim', 'yaml', 'typescript', 'markdown',
+		'bash', 'css', 'json', 'lua', 'python',
+		'vim', 'yaml',
 	  },
 	  sync_install = true,
 	  highlight = {
