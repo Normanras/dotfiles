@@ -160,7 +160,8 @@ return {
   "hrsh7th/nvim-cmp",       -- optional, for completion
 
 -- Top Right Notify Pop Up
-  'rcarriga/nvim-notify',
+  "rcarriga/nvim-notify",
+
   {'akinsho/toggleterm.nvim', version = "*", opts = {
 	direction = 'float',
   }},
@@ -376,6 +377,16 @@ return {
         priority = 1000, -- load colorscheme first
         config = true,
     },
+{
+  "https://git.sr.ht/~swaits/thethethe.nvim",
+  lazy = true,
+  event = "VeryLazy",
+  opts = { },
+},
+--   {
+--     'winter-again/wezterm-config.nvim',
+--     config = true
+-- },
   -- {
   --   "wookayin/semshi",
   --   ft = "python",

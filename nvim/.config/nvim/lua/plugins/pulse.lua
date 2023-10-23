@@ -7,10 +7,10 @@ return {
 
 	  pulse.setup({level = vim.log.levels.DEBUG})
 
-		  pulse.add("Send Krista Message", {
-			interval = 60,
-			message = "Tell Krista that you Love Her!",
-			enabled = True,
-	  })
+			--  pulse.add("Send Krista Message", {
+			-- interval = 60,
+			-- message = "Tell Krista that you Love Her!",
+			-- enabled = True,
+			-- })
   end
 }
