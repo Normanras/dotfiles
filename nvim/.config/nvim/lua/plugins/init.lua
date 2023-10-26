@@ -160,7 +160,15 @@ return {
   "hrsh7th/nvim-cmp",       -- optional, for completion
 
 -- Top Right Notify Pop Up
-  "rcarriga/nvim-notify",
+	 {
+	"rcarriga/nvim-notify",
+	   config = function ()
+	     require("notify").setup {
+	      }
+	      -- vim.api.nvim_notify = require('notify')
+		  vim.notify = require('notify')
+	    end
+	  },
 
   {'akinsho/toggleterm.nvim', version = "*", opts = {
 	direction = 'float',
@@ -259,26 +267,26 @@ return {
     end
   },
  -- Sidebar
- {
-   'sidebar-nvim/sidebar.nvim',
-   config = function()
-     require("sidebar-nvim").setup({
-      side = "right",
-      sections = {
-   "git",
-   "symbols",
-   "diagnostics",
-     },
- todos = {
-   initially_closed = false, -- whether the groups should be initially closed on start. You can manually open/close groups later.
- },
- diagnostics = {
-   icon = "",
- },
-  })
-  end
-},
-
+--  {
+--    'sidebar-nvim/sidebar.nvim',
+--    config = function()
+--      require("sidebar-nvim").setup({
+--       side = "right",
+--       sections = {
+--    "git",
+--    "symbols",
+--    "diagnostics",
+--      },
+--  todos = {
+--    initially_closed = false, -- whether the groups should be initially closed on start. You can manually open/close groups later.
+--  },
+--  diagnostics = {
+--    icon = "",
+--  },
+--   })
+--   end
+-- },
+--
 {
   'rcarriga/nvim-dap-ui', dependencies = {"mfussenegger/nvim-dap"}
 },
@@ -415,10 +423,14 @@ return {
 ----------------------------------------------
 --- Custom Plugins and Tests
 ----------------------------------------------
-  {
-    dir = '/Users/normrasmussen/Documents/Projects/tasksPlugin.nvim/',
-    dev = true,
-    name = "Mkdn Tasks (DEV)",
-  },
+  -- {
+  --   dir = '/Users/normrasmussen/Documents/Projects/tasksPlugin.nvim/',
+  --   dev = true,
+  --   name = "Mkdn Tasks (DEV)",
+  -- },
+  -- {
+  --   dir = '/Users/normrasmussen/Documents/Projects/pulse.nvim',
+  --   dev = true,
+  -- },
 }
 
