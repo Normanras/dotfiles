@@ -1,10 +1,11 @@
 return {
     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
       dependencies = {
-	'nvim-lua/plenary.nvim',
-	'nvim-telescope/telescope-live-grep-args.nvim',
-      },
+		  'nvim-lua/plenary.nvim',
+		  'nvim-telescope/telescope-live-grep-args.nvim',
+		  'jonarrien/telescope-cmdline.nvim',
+	  },
 
       config = function ()
 	  local g = vim.g
@@ -132,16 +133,23 @@ return {
 	    },
 	    extensions = {
 	      file_browser = {
-		mappings = {
-		  ["i"] = {
-		    ["<C-c>"] = fb_actions.create,
-		    ["<C-y>"] = fb_actions.copy,
-		    ["<C-r>"] = fb_actions.rename,
-		    ["<C-w>"] = fb_actions.goto_cwd,
-		    ["<C-o>"] = fb_actions.open,
-		    ["<C-d>"] = fb_actions.remove,
-		  },
-		},
+			mappings = {
+			  ["i"] = {
+				["<C-c>"] = fb_actions.create,
+				["<C-y>"] = fb_actions.copy,
+				["<C-r>"] = fb_actions.rename,
+				["<C-w>"] = fb_actions.goto_cwd,
+				["<C-o>"] = fb_actions.open,
+				["<C-d>"] = fb_actions.remove,
+			  },
+			},
+		  cmdline = {
+			  mappings = {
+				complete = '<Tab>',
+				run_selection = '<C-CR>',
+				run_input = '<CR>',
+			  }
+			}
 	      },
 	      fzf = {
 		fuzzy = true,                    -- false will only do exact matching
@@ -155,6 +163,7 @@ return {
       require("telescope").load_extension "live_grep_args"
       require("telescope").load_extension "fzf"
       require("telescope").load_extension "adjacent"
+	  require("telescope").load_extension('cmdline')
     end
 
 	}}
