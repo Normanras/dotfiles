@@ -367,6 +367,7 @@ return {
   'ray-x/starry.nvim',
   'rose-pine/neovim',
   'EdenEast/nightfox.nvim',
+  'rebelot/kanagawa.nvim',
   'catppuccin/nvim',
   {
     "folke/tokyonight.nvim",
