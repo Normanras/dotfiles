@@ -167,4 +167,4 @@ end
       --]]
 
 require('core/keymaps')
-vim.cmd[[colorscheme tol]]
+vim.cmd[[colorscheme kanagawa-wave]]

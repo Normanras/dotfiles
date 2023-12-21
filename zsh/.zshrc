@@ -55,13 +55,13 @@ alias nvim=nvimvenv
 export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+NPM_PACKAGES=/Users/normrasmussen/.npm-packages
 export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$NPM_PACKAGES/bin:$PATH"
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/.dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-NPM_PACKAGES=/Users/normrasmussen/.npm-packages
-export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/Cellar/pyenv-virtualenv/1.2.1/shims:/Users/normrasmussen/.pyenv/shims:/Users/normrasmussen/.local/share/nvim/mason/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/Cellar/pyenv-virtualenv/1.2.1/shims:/Users/normrasmussen/.pyenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/opt/homebrew/opt:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Applications/CyberArk\ EPM.app/Contents/Helpers:/usr/local/go/bin:/Users/normrasmussen/.rvm/bin:/Users/normrasmussen/.rvm/bin:$NPM_PACKAGES/bin

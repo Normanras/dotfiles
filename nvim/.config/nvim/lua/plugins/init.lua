@@ -58,6 +58,7 @@ return {
 ------------------------------------------------------------
 
   { 'MaximilianLloyd/adjacent.nvim' },
+  'BlackLight/nvim-http',
   { 'stevearc/vim-arduino'},
   { 'sindrets/diffview.nvim' },
   { 'skwee357/nvim-prose' },
@@ -363,12 +364,31 @@ return {
 -- Various Color Schemes, Dashboard, etc
 -----------------------------------------------------------
 
+  -- ColorSchemes
+  {
+	'norcalli/nvim-colorizer.lua',
+	config = function()
+          require("colorizer").setup {
+		'*';
+	  }
+	end,
+  },
   'Mofiqul/dracula.nvim',
   'ray-x/starry.nvim',
   'rose-pine/neovim',
   'EdenEast/nightfox.nvim',
   'rebelot/kanagawa.nvim',
   'catppuccin/nvim',
+  'sainnhe/sonokai',
+  {
+  "oxfist/night-owl.nvim",
+  lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  priority = 1000, -- make sure to load this before all the other start plugins
+  config = function()
+    -- load the colorscheme here
+    vim.cmd.colorscheme("night-owl")
+  end,
+  },
   {
     "folke/tokyonight.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -378,7 +398,7 @@ return {
      --  vim.cmd([[colorscheme tokyonight]])
     end,
   },
-  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = true, priority = 1000 },
+  { 'bluz71/vim-nightfly-colors', name = "nightfly", lazy = true, priority = 1000 },
   'Bekaboo/deadcolumn.nvim',
   {
         "dustypomerleau/tol.nvim",
@@ -386,16 +406,15 @@ return {
         priority = 1000, -- load colorscheme first
         config = true,
     },
+
+  -- UI Improvements and Changes
 {
   "https://git.sr.ht/~swaits/thethethe.nvim",
   lazy = true,
   event = "VeryLazy",
   opts = { },
 },
---   {
---     'winter-again/wezterm-config.nvim',
---     config = true
--- },
+  'HiPhish/rainbow-delimiters.nvim',
   -- {
   --   "wookayin/semshi",
   --   ft = "python",
