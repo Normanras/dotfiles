@@ -1,2 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/Users/normrasmussen/.config/nvim/git-sim_media/videos/1080p60/partial_movie_files/GitSim/3168721105_51972775_2708716386.mp4'

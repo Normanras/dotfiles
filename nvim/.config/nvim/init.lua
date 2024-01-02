@@ -10,6 +10,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
     })
   end
 vim.opt.rtp:prepend(lazypath)
+
 vim.g.mapleader = ','
 vim.g.localmapleader = ','
 --- vim.opt.textwidth = 85

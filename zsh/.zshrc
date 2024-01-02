@@ -13,15 +13,15 @@ export LANG=en_US.UTF-8
 export DOT="~/.dotfiles"
 alias vim='vim -S ~/.vimrc'
 alias nvim='nvim'
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+# alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 export EDITOR="$VISUAL"
 export VISUAL='nvim'
-export PYTHONPATH="/opt/homebrew/bin/python3:$PYTHONPATH"
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# export PYTHONPATH="/opt/homebrew/bin/python3:$PYTHONPATH"
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # Function to Correctly Source $VIRTUAL_ENV for Neovim
 function nvimvenv {
@@ -51,7 +51,6 @@ alias nvim=nvimvenv
 #}
 #bindkey -s ^a "nvims\n"
 
-# source /Users/normrasmussen/.docker/init-zsh.sh || true # Added by Docker Desktop
 export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
