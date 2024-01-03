@@ -1,6 +1,6 @@
 return {
     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.4',
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
       dependencies = {
 		  'nvim-lua/plenary.nvim',
 		  'nvim-telescope/telescope-live-grep-args.nvim',
@@ -165,6 +165,5 @@ return {
       require("telescope").load_extension "adjacent"
 	  require("telescope").load_extension('cmdline')
     end
-
 	}}
 
