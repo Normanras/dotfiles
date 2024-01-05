@@ -158,6 +158,20 @@ return {
       }
     end
   },
+-- Styler - for per filetype colorschemes
+ -- {
+ -- "folke/styler.nvim",
+ -- config = function()
+ --   require("styler").setup({
+ -- 	themes = {
+ -- 	  markdown = { colorscheme = "kanagawa" },
+ -- 	  python = { colorscheme = "catppuccin", background="dark" },
+ -- 	  javascript = { colorscheme = "dracula", background="dark" },
+ -- 	  html = { colorscheme = "tokyonight" },
+ -- 	}
+ -- })
+ -- end,
+ --  },
   "hrsh7th/nvim-cmp",       -- optional, for completion
 
 -- Top Right Notify Pop Up
@@ -374,7 +388,7 @@ return {
 	end,
   },
   'Mofiqul/dracula.nvim',
-  'ray-x/starry.nvim',
+  -- 'ray-x/starry.nvim',
   'rose-pine/neovim',
   'EdenEast/nightfox.nvim',
   'rebelot/kanagawa.nvim',
