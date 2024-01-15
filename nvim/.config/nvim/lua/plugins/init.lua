@@ -159,20 +159,21 @@ return {
     end
   },
 -- Styler - for per filetype colorschemes
- -- {
- -- "folke/styler.nvim",
- -- config = function()
- --   require("styler").setup({
- -- 	themes = {
- -- 	  markdown = { colorscheme = "kanagawa" },
- -- 	  python = { colorscheme = "catppuccin", background="dark" },
- -- 	  javascript = { colorscheme = "dracula", background="dark" },
- -- 	  html = { colorscheme = "tokyonight" },
- -- 	}
- -- })
- -- end,
- --  },
+ {
+ "folke/styler.nvim",
+ config = function()
+   require("styler").setup({
+ 	themes = {
+ 	  md = { colorscheme = "kanagawa" },
+ 	  python = { colorscheme = "catppuccin" },
+ 	  -- javascript = { colorscheme = "dracula" },
+ 	  -- html = { colorscheme = "tokyonight" },
+ 	},
+ })
+ end,
+  },
   "hrsh7th/nvim-cmp",       -- optional, for completion
+  "ggandor/lightspeed.nvim",
 
 -- Top Right Notify Pop Up
 	 {
