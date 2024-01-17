@@ -164,8 +164,8 @@ return {
  config = function()
    require("styler").setup({
  	themes = {
- 	  md = { colorscheme = "kanagawa" },
- 	  python = { colorscheme = "catppuccin" },
+ 	  -- md = { colorscheme = "kanagawa" },
+ 	  -- python = { colorscheme = "catppuccin" },
  	  -- javascript = { colorscheme = "dracula" },
  	  -- html = { colorscheme = "tokyonight" },
  	},
