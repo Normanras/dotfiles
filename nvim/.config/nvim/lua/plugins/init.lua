@@ -253,7 +253,8 @@ return {
     ft = "markdown",
     lazy = true,
     keys = { { "gm", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview" } },
-    config = function()
+    init = function()
+	  vim.g.mkdp_filetypes = { "markdown" }
       vim.g.mkdp_auto_close = true
       vim.g.mkdp_open_to_the_world = false
       vim.g.mkdp_open_ip = "127.0.0.1"
@@ -263,6 +264,7 @@ return {
       vim.g.mkdp_page_title = "${name}"
     end,
   },
+  { "jbyuki/venn.nvim" },
  --[[
   { 'toppair/peek.nvim',
       build = 'deno task --quiet build:fast',
@@ -397,21 +399,21 @@ return {
   'sainnhe/sonokai',
   {
   "oxfist/night-owl.nvim",
-  lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  priority = 1000, -- make sure to load this before all the other start plugins
-  config = function()
-    -- load the colorscheme here
-    vim.cmd.colorscheme("night-owl")
-  end,
+	  lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	  priority = 1000, -- make sure to load this before all the other start plugins
+	  config = function()
+		-- load the colorscheme here
+		vim.cmd.colorscheme("night-owl")
+	  end,
   },
   {
     "folke/tokyonight.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-     --  vim.cmd([[colorscheme tokyonight]])
-    end,
+	  lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	  priority = 1000, -- make sure to load this before all the other start plugins
+	  config = function()
+		-- load the colorscheme here
+	   --  vim.cmd([[colorscheme tokyonight]])
+	  end,
   },
   { 'bluz71/vim-nightfly-colors', name = "nightfly", lazy = true, priority = 1000 },
   'Bekaboo/deadcolumn.nvim',
