@@ -1,9 +1,0 @@
-[
-  {
-    "host": "192.168.200.500",
-    "user": "auto",
-    "passwd": "Over9+look*",
-    "remote_dir": "/home/auto/",
-    "mount_point": "~/Documents/Projects/hass-remote-nvim/"
-  }
-]
