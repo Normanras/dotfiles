@@ -57,6 +57,10 @@ return {
 -- General Functionality
 ------------------------------------------------------------
 
+  { 'kenn7/vim-arsync',
+	dependencies={'prabirshrestha/async.vim'},
+  },
+
   { 'MaximilianLloyd/adjacent.nvim' },
   'BlackLight/nvim-http',
   { 'stevearc/vim-arduino'},
