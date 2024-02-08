@@ -246,6 +246,32 @@ return {
       require('mini.fuzzy').setup()
     end
   },
+  {
+	'echasnovski/mini.hipatterns', version = false,
+	-- event = "BufReadPre",
+	config = function()
+	  local hipatterns = require('mini.hipatterns')
+	  hipatterns.setup({
+		  highlighters = {
+			fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+			hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
+			todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
+			note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
+			hex_color = hipatterns.gen_highlighter.hex_color(),
+			hsl_color = {
+			  pattern = "hsl%(%d+,? %d+,? %d+%)",
+			  group = function(_, match)
+				local utils = require("solarized-osaka.hsl")
+				local nh, ns, nl = match:match("hsl%((%d+),? (%d+),? (%d+)%)")
+				local h, s, l = tonumber(nh), tonumber(ns), tonumber(nl)
+				local hex_color = utils.hslToHex(h, s, l)
+				return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
+			  end,
+			},
+		  },
+		})
+	  end
+  },
 
 -----------------------------------------------------------
 -- Markdown Plugins
@@ -288,30 +314,9 @@ return {
      )
     end
   },
- -- Sidebar
---  {
---    'sidebar-nvim/sidebar.nvim',
---    config = function()
---      require("sidebar-nvim").setup({
---       side = "right",
---       sections = {
---    "git",
---    "symbols",
---    "diagnostics",
---      },
---  todos = {
---    initially_closed = false, -- whether the groups should be initially closed on start. You can manually open/close groups later.
---  },
---  diagnostics = {
---    icon = "",
---  },
---   })
---   end
--- },
---
-{
-  'rcarriga/nvim-dap-ui', dependencies = {"mfussenegger/nvim-dap"}
-},
+  {
+	'rcarriga/nvim-dap-ui', dependencies = {"mfussenegger/nvim-dap"}
+  },
 
 ---------------------------------------------------------
 -- Text, Icons, Symbols
@@ -339,40 +344,40 @@ return {
   'nvim-lua/plenary.nvim',
 
   -- Todo & Comments for Organization
-  {
-    'folke/todo-comments.nvim',
-      dependencies = "nvim-lua/plenary.nvim",
-        config = function()
-          require("todo-comments").setup {
-               keywords = {
-                  FIX = {
-                    icon = " ", -- icon used for the sign, and in search results
-                    color = "error", -- can be a hex color, or a named color (see below)
-                    alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-                  -- signs = false, -- configure signs for some keywords individually
-                  },
-                  DONE = { icon = " ", color = "info" },
-		  IN_PROG = { icon = "󰇘", color = "default" },
-                  FEAT = { icon = " ", color = "warning", alt = { "NEED", "REQUEST" } },
-                  WARN = { icon = " ", color = "error", alt = { "WARNING", "ERROR" } },
-                  TODO = { icon = " ", color = "hint", alt = { "TASK", "TBD" } },
-                  RISK = { icon = " ", color = "hint", alt = { "RISK" } },
-                  SENG = { icon = " ", color = "test", alt = { "SOLUTIONS", "SE", "WORKAROUND" } },
-                },
-                highlight = {
-                  comments_only = false,
-                },
-                colors = {
-                  error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
-                  warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
-                  info = { "DiagnosticInfo", "#2563EB" },
-                  hint = { "DiagnosticHint", "#10B981" },
-                  default = { "Identifier", "#7C3AED" },
-                  test = { "Identifier", "#FF00FF" }
-                },
-     }
-      end
-  },
+  -- {
+  --   'folke/todo-comments.nvim',
+  --     dependencies = "nvim-lua/plenary.nvim",
+  --       config = function()
+  --         require("todo-comments").setup {
+  --              keywords = {
+  --                 FIX = {
+  --                   icon = " ", -- icon used for the sign, and in search results
+  --                   color = "error", -- can be a hex color, or a named color (see below)
+  --                   alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+  --                 -- signs = false, -- configure signs for some keywords individually
+  --                 },
+  --                 DONE = { icon = " ", color = "info" },
+  --   IN_PROG = { icon = "󰇘", color = "default" },
+  --                 FEAT = { icon = " ", color = "warning", alt = { "NEED", "REQUEST" } },
+  --                 WARN = { icon = " ", color = "error", alt = { "WARNING", "ERROR" } },
+  --                 TODO = { icon = " ", color = "hint", alt = { "TASK", "TBD" } },
+  --                 RISK = { icon = " ", color = "hint", alt = { "RISK" } },
+  --                 SENG = { icon = " ", color = "test", alt = { "SOLUTIONS", "SE", "WORKAROUND" } },
+  --               },
+  --               highlight = {
+  --                 comments_only = false,
+  --               },
+  --               colors = {
+  --                 error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+  --                 warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
+  --                 info = { "DiagnosticInfo", "#2563EB" },
+  --                 hint = { "DiagnosticHint", "#10B981" },
+  --                 default = { "Identifier", "#7C3AED" },
+  --                 test = { "Identifier", "#FF00FF" }
+  --               },
+  --    }
+  --     end
+  -- },
   -- Various telescopes
   'nvim-telescope/telescope-file-browser.nvim',
 
@@ -385,15 +390,15 @@ return {
 -- Various Color Schemes, Dashboard, etc
 -----------------------------------------------------------
 
-  -- ColorSchemes
+  { 'rktjmp/lush.nvim' },
+  { 'normanras/link.nvim' },
+  { dir = '/Users/normrasmussen/Documents/Projects/link-two/', lazy = true},
   {
-	'norcalli/nvim-colorizer.lua',
-	config = function()
-          require("colorizer").setup {
-		'*';
-	  }
-	end,
-  },
+  "craftzdog/solarized-osaka.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+},
   'Mofiqul/dracula.nvim',
   -- 'ray-x/starry.nvim',
   'rose-pine/neovim',
@@ -421,12 +426,12 @@ return {
   },
   { 'bluz71/vim-nightfly-colors', name = "nightfly", lazy = true, priority = 1000 },
   'Bekaboo/deadcolumn.nvim',
-  {
-        "dustypomerleau/tol.nvim",
-        lazy = false, -- load the colorscheme at startup
-        priority = 1000, -- load colorscheme first
-        config = true,
-    },
+  -- {
+  --       "dustypomerleau/tol.nvim",
+  --       lazy = false, -- load the colorscheme at startup
+  --       priority = 1000, -- load colorscheme first
+  --       config = true,
+  --   },
 
   -- UI Improvements and Changes
 {
