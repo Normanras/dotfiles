@@ -4,8 +4,9 @@ return {
         require('mkdnflow').setup({
           mappings = {
             MkdnToggleToDo = {{'i', 'n'}, '<C-Space>'},
-            MkdnNewListItem = {{'i'}, '<CR>'},
-            MkdnEnter = {{'n'}, '<CR>'},
+			MkdnEnter = {{'i', 'n', 'v'}, '<CR>'},
+			MkdnExtendList = {{'n'}, '<leader>;'},
+			MkdnNewListItemBelowInsert = {{'n', 'i'}, '<leader>l'},
             MkdnTableNextCell = false,
             MkdnTab = {{'i',}, '<Tab>'},
             MkdnSTab = {{'i'}, '<S-Tab>'},

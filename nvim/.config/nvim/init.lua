@@ -45,10 +45,10 @@ opt.shell = "/bin/zsh"
 opt.updatetime = 200
 opt.cursorline = true
 g.markdown_folding = 1
+-- g.markdown_enable_folding = 1
 opt.spell=true
 opt.spelllang = 'en_us'
 cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
-vim.api.nvim_set_hl(0, "ColorColumn", {guibg=DarkOrchid1})
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
@@ -100,9 +100,9 @@ vim.cmd [[
   ]]
 vim.cmd [[ autocmd FileType python set textwidth=110 ]]
 vim.cmd [[ autocmd FileType lua set textwidth=80 ]]
-vim.cmd [[ autocmd FileType markdown,text set textwidth=125 shiftwidth=2 ]]
+vim.cmd [[ autocmd FileType markdown,text set shiftwidth=2 foldlevel=99 ]]
+-- vim.cmd [[ autocmd FileType markdown setlocal foldlevel=99 ]]
 
---[[
 local disabled_built_ins = {
     "netrw",
     "netrwPlugin",
@@ -127,7 +127,6 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
     end
-]]--
 
 -- Deletes all trailing whitespaces in a file if it's not binary nor a diff.
 function _G.trim_trailing_whitespaces()
@@ -168,4 +167,3 @@ end
       --]]
 
 require('core/keymaps')
--- vim.cmd[[colorscheme kanagawa]]

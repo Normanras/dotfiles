@@ -2,22 +2,21 @@ return {
    'neovim/nvim-lspconfig',
    config = function()
       -- Setup language servers.
-      local lspconfig = require('lspconfig')
-	lspconfig.pylsp.setup {}
+	local lspconfig = require('lspconfig')
+	local configs = require('lspconfig.configs')
+	lspconfig.pylsp.setup{
 	-- Server-specific settings. See `:help lspconfig-setup`
 	settings = {
 	    settings = {
 	      pylsp = {
-	      configurationSources = {"pylint"},
-	      plugins = {
-		pylint = { enabled = true },
-		flake8 = { enabled = false },
-		pycodestyle = { enabled = false },
-		pyflakes = { enabled = false },
+			configurationSources = {"pylint"},
+			plugins = {
+		  pylint = { enabled = true },
 		    }
 		  }
 		}
 	      }
+	}
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
@@ -55,5 +54,39 @@ return {
 	  end, opts)
 	end,
       })
-   end
+
+	 local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+	if not configs.ls_emmet then
+	  configs.ls_emmet = {
+		default_config = {
+		  cmd = { 'ls_emmet', '--stdio' };
+		  filetypes = {
+			'html',
+			'liquid',
+			'css',
+			'scss',
+			'javascriptreact',
+			'typescriptreact',
+			'haml',
+			'xml',
+			'xsl',
+			'pug',
+			'slim',
+			'sass',
+			'stylus',
+			'less',
+			'sss',
+			'handlebars',
+		  };
+		  root_dir = function(fname)
+			return vim.loop.cwd()
+		  end;
+		  settings = {};
+		};
+	  }
+	end
+	lspconfig.ls_emmet.setup { capabilities = capabilities }
+	  end
 }

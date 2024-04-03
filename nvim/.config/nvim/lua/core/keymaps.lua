@@ -30,7 +30,8 @@ map('n', '<leader>q', ':SidebarNvimUpdate<CR>', default_opts)
 
 -- Telescope
 map('n', '<leader>ff', ':Telescope find_files<CR>', default_opts)
-map('n', '<leader>fg', ':Telescope live_grep<CR>', default_opts)
+map('n', '<leader>fh', ':Telescope live_grep<CR>', default_opts)
+map('n', '<leader>fg', ':Telescope live_grep_args<CR>', default_opts)
 map('n', '<leader>fb', ':Telescope buffers<CR>', default_opts)
 map('n', '<leader>fe', ':Telescope file_browser<CR>', default_opts)
 map('n', '<leader>fk', ':Telescope keymaps<CR>', default_opts)
@@ -41,6 +42,9 @@ map('n', '<leader>cb', ':Telescope current_buffer_fuzzy_find<CR>', default_opts)
 map('n', '<leader>b', ':! black %<CR>', default_opts)
 map('n', '<leader>m', ':! markdownlint -f %<CR>', default_opts)
 map('n', '<leader>pj', ':!python -m json.tool<CR>', default_opts)
+
+-- Fold all comments
+map('n', '<leader>fc', ':set foldmethod=expr foldexpr=getline(v:lnum)=~"^\\s*".&commentstring[0]<CR>', default_opts)
 
 -- Terminal
 map('n', '<C-t>', ':ToggleTerm direction=float<CR>', default_opts)

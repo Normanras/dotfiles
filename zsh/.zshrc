@@ -13,7 +13,9 @@ export LANG=en_US.UTF-8
 export DOT="~/.dotfiles"
 alias vim='vim -S ~/.vimrc'
 alias nvim='nvim'
- alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
 export EDITOR="$VISUAL"
 export VISUAL='nvim'
@@ -64,3 +66,4 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/.dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. "$HOME/.cargo/env"

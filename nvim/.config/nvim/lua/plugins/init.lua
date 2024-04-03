@@ -33,15 +33,19 @@ return {
 		  history = true,
 		  delete_check_events = "TextChanged",
 		})
+		require("luasnip").filetype_extend("liquid", {"html","css","javascript"})
 		require("luasnip.loaders.from_vscode").lazy_load()
 		require("luasnip.loaders.from_vscode").load({
 			paths = {
-  "~/.dotfiles/nvim/.config/nvim/lua/custom_snippets/" }
+			  "~/.dotfiles/nvim/.config/nvim/lua/custom_snippets/" }
 		  })
+		-- require("luasnip.extras.filetype_functions").extend_load_ft({
+		-- 	liquid = {"html", "css", "javascript" },
+		--  })
       end,
   },
 
-  {"ellisonleao/glow.nvim", config = function() require("glow").setup() end },
+  -- {"ellisonleao/glow.nvim", config = function() require("glow").setup() end },
 
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp-signature-help',
@@ -86,7 +90,7 @@ return {
 	  always_divide_middle = false,
 	},
 	sections = {
-	  lualine_x = { "encoding", { "fileformat", symbols = { unix = "" } }, "filetype" },
+	  lualine_x = { "encoding", { "fileformat", symbols = { unix = " " } }, "filetype" },
 	},
 })
   end,
@@ -161,20 +165,6 @@ return {
       require("which-key").setup {
       }
     end
-  },
--- Styler - for per filetype colorschemes
- {
- "folke/styler.nvim",
- config = function()
-   require("styler").setup({
- 	themes = {
- 	  -- md = { colorscheme = "kanagawa" },
- 	  -- python = { colorscheme = "catppuccin" },
- 	  -- javascript = { colorscheme = "dracula" },
- 	  -- html = { colorscheme = "tokyonight" },
- 	},
- })
- end,
   },
   "hrsh7th/nvim-cmp",       -- optional, for completion
   "ggandor/lightspeed.nvim",
@@ -253,10 +243,6 @@ return {
 	  local hipatterns = require('mini.hipatterns')
 	  hipatterns.setup({
 		  highlighters = {
-			fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-			hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
-			todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
-			note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
 			hex_color = hipatterns.gen_highlighter.hex_color(),
 			hsl_color = {
 			  pattern = "hsl%(%d+,? %d+,? %d+%)",
@@ -344,40 +330,40 @@ return {
   'nvim-lua/plenary.nvim',
 
   -- Todo & Comments for Organization
-  -- {
-  --   'folke/todo-comments.nvim',
-  --     dependencies = "nvim-lua/plenary.nvim",
-  --       config = function()
-  --         require("todo-comments").setup {
-  --              keywords = {
-  --                 FIX = {
-  --                   icon = " ", -- icon used for the sign, and in search results
-  --                   color = "error", -- can be a hex color, or a named color (see below)
-  --                   alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-  --                 -- signs = false, -- configure signs for some keywords individually
-  --                 },
-  --                 DONE = { icon = " ", color = "info" },
-  --   IN_PROG = { icon = "󰇘", color = "default" },
-  --                 FEAT = { icon = " ", color = "warning", alt = { "NEED", "REQUEST" } },
-  --                 WARN = { icon = " ", color = "error", alt = { "WARNING", "ERROR" } },
-  --                 TODO = { icon = " ", color = "hint", alt = { "TASK", "TBD" } },
-  --                 RISK = { icon = " ", color = "hint", alt = { "RISK" } },
-  --                 SENG = { icon = " ", color = "test", alt = { "SOLUTIONS", "SE", "WORKAROUND" } },
-  --               },
-  --               highlight = {
-  --                 comments_only = false,
-  --               },
-  --               colors = {
-  --                 error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
-  --                 warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
-  --                 info = { "DiagnosticInfo", "#2563EB" },
-  --                 hint = { "DiagnosticHint", "#10B981" },
-  --                 default = { "Identifier", "#7C3AED" },
-  --                 test = { "Identifier", "#FF00FF" }
-  --               },
-  --    }
-  --     end
-  -- },
+  {
+    'folke/todo-comments.nvim',
+      dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+          require("todo-comments").setup {
+               keywords = {
+                  FIX = {
+                    icon = " ", -- icon used for the sign, and in search results
+                    color = "error", -- can be a hex color, or a named color (see below)
+                    alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+                  -- signs = false, -- configure signs for some keywords individually
+                  },
+                  DONE = { icon = " ", color = "info" },
+    IN_PROG = { icon = "󰇘", color = "default" },
+                  FEAT = { icon = " ", color = "warning", alt = { "NEED", "REQUEST" } },
+                  WARN = { icon = " ", color = "error", alt = { "WARNING", "ERROR" } },
+                  TODO = { icon = " ", color = "hint", alt = { "TASK", "TBD" } },
+                  RISK = { icon = " ", color = "hint", alt = { "RISK" } },
+                  GOAL = { icon = " ", color = "test", alt = { "GOAL", "KPI"} },
+                },
+                highlight = {
+                  comments_only = false,
+                },
+                colors = {
+                  error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+                  warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
+                  info = { "DiagnosticInfo", "#2563EB" },
+                  hint = { "DiagnosticHint", "#10B981" },
+                  default = { "Identifier", "#7C3AED" },
+                  test = { "Identifier", "#FF00FF" }
+                },
+     }
+      end
+  },
   -- Various telescopes
   'nvim-telescope/telescope-file-browser.nvim',
 
@@ -391,8 +377,8 @@ return {
 -----------------------------------------------------------
 
   { 'rktjmp/lush.nvim' },
-  { 'normanras/link.nvim' },
-  { dir = '/Users/normrasmussen/Documents/Projects/link-two/', lazy = true},
+  -- { 'normanras/link.nvim' },
+  -- { dir = '/Users/normrasmussen/Documents/Projects/link-two/', lazy = true},
   {
   "craftzdog/solarized-osaka.nvim",
   lazy = false,
