@@ -316,12 +316,10 @@ return {
   },
   {
   "j-hui/fidget.nvim",
-  tag = "legacy",
-  event = "LspAttach",
   opts = {
     -- options
+	},
   },
-},
   'lukas-reineke/indent-blankline.nvim',
   'karb94/neoscroll.nvim',
 
@@ -376,6 +374,13 @@ return {
 -- Various Color Schemes, Dashboard, etc
 -----------------------------------------------------------
 
+
+  {
+	"eldritch-theme/eldritch.nvim",
+	lazy = false,
+	priority = 1000,
+	opts = {},
+  },
   { 'rktjmp/lush.nvim' },
   -- { 'normanras/link.nvim' },
   -- { dir = '/Users/normrasmussen/Documents/Projects/link-two/', lazy = true},
