@@ -13,6 +13,9 @@ local default_opts = { noremap = true, silent = true }
 -- Python Script that saves the file & moves Todos to my Todolist.
 -- map('n', '<leader>sd', ':w|:! python3 ~/Documents/Northpass/Scripts/TodoMD/todo.py %<CR>', default_opts)
 
+-- Close and save all buffers and return to Dashboard
+map('n', '<leader>ds', ':silent wa | %bd | Alpha', default_opts)
+
 -- Neovim Tab Navgation via Vem-Tabline
 map('n', '<leader>t', ':tabnew<CR>', default_opts)
 map('n', '<leader>e', ':bnext<CR>', default_opts)
