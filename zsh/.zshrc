@@ -67,3 +67,4 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 . "$HOME/.cargo/env"
+export PATH="/usr/local/opt/openssl/bin:$PATH"

@@ -263,23 +263,23 @@ return {
 -- Markdown Plugins
 ------------------------------------------------------------
 
-   {
-    "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install",
-    ft = "markdown",
-    lazy = true,
-    keys = { { "gm", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview" } },
-    init = function()
-	  vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_auto_close = true
-      vim.g.mkdp_open_to_the_world = false
-      vim.g.mkdp_open_ip = "127.0.0.1"
-      vim.g.mkdp_port = "8888"
-      vim.g.mkdp_browser = ""
-      vim.g.mkdp_echo_preview_url = true
-      vim.g.mkdp_page_title = "${name}"
-    end,
-  },
+  --  {
+  --   "iamcco/markdown-preview.nvim",
+  --   build = "cd app && npm install",
+  --   ft = "markdown",
+  --   lazy = true,
+  --   keys = { { "gm", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview" } },
+  --   init = function()
+  --  vim.g.mkdp_filetypes = { "markdown" }
+  --     vim.g.mkdp_auto_close = true
+  --     vim.g.mkdp_open_to_the_world = false
+  --     vim.g.mkdp_open_ip = "127.0.0.1"
+  --     vim.g.mkdp_port = "8888"
+  --     vim.g.mkdp_browser = ""
+  --     vim.g.mkdp_echo_preview_url = true
+  --     vim.g.mkdp_page_title = "${name}"
+  --   end,
+  -- },
   { "jbyuki/venn.nvim" },
  --[[
   { 'toppair/peek.nvim',
@@ -292,14 +292,14 @@ return {
   -- DAP (Debug adaptor Protocol)
   'mfussenegger/nvim-dap',
 
- {
-   'mfussenegger/nvim-dap-python',
-   config = function()
-     require('dap-python').setup(
-     '~/.virtualenvs/debugpy/bin/python'
-     )
-    end
-  },
+ -- {
+ --   'mfussenegger/nvim-dap-python',
+ --   config = function()
+ --     require('dap-python').setup(
+ --     '~/.virtualenvs/debugpy/bin/python'
+ --     )
+ --    end
+ --  },
   {
 	'rcarriga/nvim-dap-ui', dependencies = {"mfussenegger/nvim-dap"}
   },
