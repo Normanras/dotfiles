@@ -55,7 +55,8 @@ cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
 opt.number = true               -- Show line number
 opt.relativenumber = true       -- Show Current Line with Relative numbers above and below cursor.
 opt.showmatch = true            -- Highlight matching parenthesis
-opt.foldmethod = "syntax"       -- Enable folding (default 'foldmarker')
+opt.foldmethod = "expr"       -- Enable folding (default 'foldmarker')
+opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.splitright = true           -- Vertical split to the right
 opt.splitbelow = true           -- Horizontal split to the bottom
 opt.ignorecase = true           -- Ignore case letters when search

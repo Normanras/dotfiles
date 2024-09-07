@@ -64,6 +64,7 @@ return {
   { 'kenn7/vim-arsync',
 	dependencies={'prabirshrestha/async.vim'},
   },
+  {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'},
 
   { 'MaximilianLloyd/adjacent.nvim' },
   'BlackLight/nvim-http',
