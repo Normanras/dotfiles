@@ -189,6 +189,11 @@ return {
 -- echasnovski's Minis get a section of their own...
 ------------------------------------------------------------
 
+{ 'echasnovski/mini.pick', version = '*',
+	config = function()
+			require('mini.pick').setup()
+		end
+	},
 {
     'echasnovski/mini.comment', version = '*',
     config = function()

@@ -79,9 +79,9 @@ opt.termguicolors = true      -- Enable 24-bit RGB colors
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
-g.expandtab = true            -- Use spaces instead of tabs
+g.expandtab = false            -- Use spaces instead of tabs
 g.shiftwidth = 2              -- Shift 4 spaces when tab
-g.tabstop = 1                 -- 1 tab == 4 spaces
+g.tabstop = 2                 -- 1 tab == 4 spaces
 g.smartindent = true          -- Autoindent new lines
 -----------------------------------------------------------
 -- Glow Settings
@@ -97,7 +97,7 @@ g.glow_style = 'dark'
 -----------------------------------------------------------
 -- 2 spaces for selected filetypes
 vim.cmd [[
-  autocmd FileType md,liquid,xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=4 noexpandtab
+  autocmd FileType md,liquid,xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2 noexpandtab
   ]]
 vim.cmd [[ autocmd FileType python set textwidth=110 ]]
 vim.cmd [[ autocmd FileType lua set textwidth=80 ]]
