@@ -61,6 +61,12 @@ return {
 -- General Functionality
 ------------------------------------------------------------
 
+	{
+  'stevearc/oil.nvim',
+  opts = {},
+  -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	},
   { 'kenn7/vim-arsync',
 	dependencies={'prabirshrestha/async.vim'},
   },
