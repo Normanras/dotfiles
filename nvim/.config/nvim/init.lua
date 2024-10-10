@@ -99,11 +99,11 @@ g.glow_style = 'dark'
 vim.cmd [[
   autocmd FileType md,liquid,xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2 noexpandtab
   ]]
-vim.cmd [[ autocmd FileType python set textwidth=110 ]]
+vim.cmd [[ autocmd FileType python set textwidth=250 ]]
 vim.cmd [[ autocmd FileType lua set textwidth=80 ]]
 vim.cmd [[ autocmd FileType markdown,text set shiftwidth=2 foldlevel=99 ]]
 -- vim.cmd [[ autocmd FileType markdown setlocal foldlevel=99 ]]
-vim.cmd[[ colorscheme eldritch ]]
+vim.cmd[[ colorscheme dustfox ]]
 
 local disabled_built_ins = {
     "netrw",

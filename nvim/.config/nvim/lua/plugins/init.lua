@@ -387,6 +387,7 @@ return {
 -----------------------------------------------------------
 
 
+	{'jaredgorski/spacecamp'},
   {
 	"eldritch-theme/eldritch.nvim",
 	lazy = false,
