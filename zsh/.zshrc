@@ -13,17 +13,17 @@ export LANG=en_US.UTF-8
 export DOT="~/.dotfiles"
 alias vim='vim -S ~/.vimrc'
 alias nvim='nvim'
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+#alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
 export EDITOR="$VISUAL"
 export VISUAL='nvim'
 export PYTHONPATH="/opt/homebrew/bin/python3:$PYTHONPATH"
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 # Function to Correctly Source $VIRTUAL_ENV for Neovim
 function nvimvenv {
@@ -64,6 +64,15 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source ~/.dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 . "$HOME/.cargo/env"
+
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+echo 'eval "$(uv generate-shell-completion zsh)"' >> ~/.zshrc
+source $HOME/.cargo/env
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(uv generate-shell-completion zsh)"
