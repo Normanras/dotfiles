@@ -47,15 +47,15 @@ return {
 
   -- {"ellisonleao/glow.nvim", config = function() require("glow").setup() end },
 
-    'saadparwaiz1/cmp_luasnip',
-    'hrsh7th/cmp-nvim-lsp-signature-help',
-    'lukas-reineke/cmp-under-comparator',
+    -- 'saadparwaiz1/cmp_luasnip',
+    -- 'hrsh7th/cmp-nvim-lsp-signature-help',
+    -- 'lukas-reineke/cmp-under-comparator',
 
-  {
-    'asiryk/auto-hlsearch.nvim',
-    version = "1.1.0",
-    config = function() require("auto-hlsearch").setup{} end,
-  },
+  -- {
+  --   'asiryk/auto-hlsearch.nvim',
+  --   version = "1.1.0",
+  --   config = function() require("auto-hlsearch").setup{} end,
+  -- },
 
 ------------------------------------------------------------
 -- General Functionality
@@ -64,8 +64,8 @@ return {
 	{
   'stevearc/oil.nvim',
   opts = {},
-  -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
-  dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
 	},
   { 'kenn7/vim-arsync',
 	dependencies={'prabirshrestha/async.vim'},
@@ -173,8 +173,7 @@ return {
       }
     end
   },
-  "hrsh7th/nvim-cmp",       -- optional, for completion
-  "ggandor/lightspeed.nvim",
+  -- "hrsh7th/nvim-cmp",       -- optional, for completion
 
 -- Top Right Notify Pop Up
 	 {
@@ -194,6 +193,15 @@ return {
 ------------------------------------------------------------
 -- echasnovski's Minis get a section of their own...
 ------------------------------------------------------------
+
+{
+		'echasnovski/mini.misc', version = '*',
+			config = function()
+			require('mini.misc').setup({
+				make_global = {'setup_auto_root'},
+			})
+		end
+	},
 
 { 'echasnovski/mini.pick', version = '*',
 	config = function()
@@ -320,12 +328,12 @@ return {
 -- Text, Icons, Symbols
 ----------------------------------------------------------
 
-  {
-    'simrat39/symbols-outline.nvim',
-    config = function()
-      require('symbols-outline').setup()
-    end
-  },
+  -- {
+  --   'simrat39/symbols-outline.nvim',
+  --   config = function()
+  --     require('symbols-outline').setup()
+  --   end
+  -- },
   {
   "j-hui/fidget.nvim",
   opts = {
