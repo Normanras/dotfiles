@@ -51,7 +51,9 @@ g.markdown_folding = 1
 -- g.markdown_enable_folding = 1
 opt.spell=true
 opt.spelllang = 'en_us'
-cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
+opt.autochdir = true
+vim.cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
+-- vim.cmd [[ autocmd autochdir ]]
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
