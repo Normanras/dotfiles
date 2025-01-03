@@ -12,7 +12,7 @@
 	"box": {
 		"prefix": "hugobox",
 		"body": ["{{< box info >}} \n\n {{< /box  >}}"],
-		"description": "Custom info box for hugo website. Info can also be warn, tip."
+		"description": "Cstom info box for hugo website. Info can also be warn, tip."
 
 	}
 }
