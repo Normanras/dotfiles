@@ -57,9 +57,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 eval "$(uv generate-shell-completion zsh)"
-<<<<<<< HEAD
-=======
-eval "$(uv generate-shell-completion zsh)"
-eval "$(uv generate-shell-completion zsh)"
-eval "$(uv generate-shell-completion zsh)"
->>>>>>> parent of 2cafc91 (Breaking changes for blink.cmp, so that needed to be updated. Updated keymaps location based on that plugin as well.)
