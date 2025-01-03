@@ -44,7 +44,10 @@ export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 45eca45 (Updated settings for avante. Removed mini.deps config.)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -57,4 +60,7 @@ echo 'eval "$(uv generate-shell-completion zsh)"' >> ~/.zshrc
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(uv generate-shell-completion zsh)"
+<<<<<<< HEAD
+=======
 eval "$(uv generate-shell-completion zsh)"
