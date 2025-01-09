@@ -108,7 +108,7 @@ vim.cmd [[ autocmd FileType python set textwidth=250 ]]
 vim.cmd [[ autocmd FileType lua set textwidth=80 ]]
 vim.cmd [[ autocmd FileType markdown,text set shiftwidth=2 foldlevel=99 ]]
 -- vim.cmd [[ autocmd FileType markdown setlocal foldlevel=99 ]]
-vim.cmd[[ colorscheme duskfox ]]
+vim.cmd[[ colorscheme morta ]]
 
 local disabled_built_ins = {
     "netrw",
