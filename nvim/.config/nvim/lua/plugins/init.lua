@@ -48,19 +48,50 @@ return {
 -- General Functionality
 ------------------------------------------------------------
 
-	-- Todo Manager
-	{
-    "Dan7h3x/LazyDo",
-    branch = "main",
-    keys = {
-			{
-			"<F2>","<ESC><CMD>LazyDoToggle<CR>",
-			mode = {"n","i"},
-			},
-    },
-    event = "VeryLazy",
-		opts = {},
-	},
+	-- lazy.nvim
+{
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- add any options here
+  },
+  dependencies = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL:
+    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --   If not available, we use `mini` as the fallback
+    "rcarriga/nvim-notify",
+    }
+},
+-- {
+--     "huantrinh1802/m_taskwarrior_d.nvim",
+--     version = "*",
+--     dependencies = { "MunifTanjim/nui.nvim" },
+--     config = function()
+--     -- Require
+--       require("m_taskwarrior_d").setup()
+--     -- Optional
+--       vim.api.nvim_set_keymap("n", "<leader>te", "<cmd>TWEditTask<cr>", { desc = "TaskWarrior Edit", noremap = true, silent = true })
+--       vim.api.nvim_set_keymap("n", "<leader>tv", "<cmd>TWView<cr>", { noremap = true, silent = true })
+--       vim.api.nvim_set_keymap("n", "<leader>tu", "<cmd>TWUpdateCurrent<cr>", { noremap = true, silent = true })
+--       vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>TWSyncTasks<cr>", { noremap = true, silent = true })
+--       vim.api.nvim_set_keymap(
+--         "n",
+--         "<c-space>",
+--         "<cmd>TWToggle<cr>",
+--         { silent = true }
+--       )
+--     -- Be caution: it may be slow to open large files, because it scan the whole buffer
+--       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
+--         group = vim.api.nvim_create_augroup("TWTask", { clear = true }),
+--         pattern = "*.md,*.markdown", -- Pattern to match Markdown files
+--         callback = function()
+--           vim.cmd('TWSyncTasks')
+--         end,
+--       })
+--     end,
+--   },
 
 	-- Neovim statusline
 	{
@@ -72,14 +103,15 @@ return {
 				-- always_divide_middle = false,
 			},
 			sections = {
-				lualine_x = { {
-					function()
-						return require("lazydo").get_lualine_stats()
-					end,
-					cond = function()
-						return require("lazydo")._initialized
-					end,
-				},
+				lualine_x = {
+					-- {
+				-- 	function()
+				-- 		return require("lazydo").get_lualine_stats()
+				-- 	end,
+				-- 	cond = function()
+				-- 		return require("lazydo")._initialized
+				-- 	end,
+				-- },
 					{"fileformat", symbols = { unix = " " }, "filetype" },
 			},
 			},
@@ -204,10 +236,20 @@ return {
 	 {
 	"rcarriga/nvim-notify",
 	   config = function ()
-	     require("notify").setup {
-	      }
+	     require("notify").setup ({
+	      	timeout = 5000,
+					render = "minimal",
+					stages = "fade_in_slide_out",
+					on_open = function(win)
+						vim.api.nvim_win_set_config(win, { focusable = false })
+					end,
+				})
+
+				vim.keymap.set("n", "<Esc>", function()
+					require("notify").dismiss()
+				end, { desc = "dismiss notify popup and clear hlsearch" })
 	      -- vim.api.nvim_notify = require('notify')
-		  vim.notify = require('notify')
+		  -- vim.notify = require('notify')
 	    end
 	  },
 	-- Custom Terminal within Neovim
@@ -220,11 +262,11 @@ return {
 -- echasnovski's Minis get a section of their own...
 ------------------------------------------------------------
 
-{ 'echasnovski/mini.pick', version = '*',
-	config = function()
-			require('mini.pick').setup()
-		end
-	},
+-- { 'echasnovski/mini.pick', version = '*',
+-- 	config = function()
+-- 			require('mini.pick').setup()
+-- 		end
+-- 	},
 {
     'echasnovski/mini.comment', version = '*',
     config = function()
@@ -273,7 +315,7 @@ return {
       require('mini.fuzzy').setup()
     end
   },
-  {
+	 {
 	'echasnovski/mini.hipatterns', version = false,
 	-- event = "BufReadPre",
 	config = function()
@@ -294,7 +336,7 @@ return {
 		  },
 		})
 	  end
-  },
+	 },
 
 -----------------------------------------------------------
 -- Markdown Plugins
@@ -317,10 +359,10 @@ return {
   --     vim.g.mkdp_page_title = "${name}"
   --   end,
   -- },
-  { "jbyuki/venn.nvim" },
+  -- { "jbyuki/venn.nvim" },
 
   -- DAP (Debug adaptor Protocol)
-  'mfussenegger/nvim-dap',
+  -- 'mfussenegger/nvim-dap',
 
  -- {
  --   'mfussenegger/nvim-dap-python',
@@ -330,9 +372,9 @@ return {
  --     )
  --    end
  --  },
-  {
-	'rcarriga/nvim-dap-ui', dependencies = {"mfussenegger/nvim-dap"}
-  },
+	--  {
+	-- 'rcarriga/nvim-dap-ui', dependencies = {"mfussenegger/nvim-dap"}
+	--  },
 
 ---------------------------------------------------------
 -- Text, Icons, Symbols
@@ -351,47 +393,47 @@ return {
 	},
   },
   'lukas-reineke/indent-blankline.nvim',
-  'karb94/neoscroll.nvim',
+  -- 'karb94/neoscroll.nvim',
 
   -- Allow Popups for Telescope etc
   'nvim-lua/popup.nvim',
   'nvim-lua/plenary.nvim',
 
   -- Todo & Comments for Organization
-  {
-    'folke/todo-comments.nvim',
-      dependencies = "nvim-lua/plenary.nvim",
-        config = function()
-          require("todo-comments").setup {
-               keywords = {
-                  FIX = {
-                    icon = " ", -- icon used for the sign, and in search results
-                    color = "error", -- can be a hex color, or a named color (see below)
-                    alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-                  -- signs = false, -- configure signs for some keywords individually
-                  },
-                  DONE = { icon = " ", color = "info" },
-    IN_PROG = { icon = "󰇘", color = "default" },
-                  FEAT = { icon = " ", color = "warning", alt = { "NEED", "REQUEST" } },
-                  WARN = { icon = " ", color = "error", alt = { "WARNING", "ERROR" } },
-                  TODO = { icon = " ", color = "hint", alt = { "TASK", "TBD" } },
-                  RISK = { icon = " ", color = "hint", alt = { "RISK" } },
-                  GOAL = { icon = " ", color = "test", alt = { "GOAL", "KPI"} },
-                },
-                highlight = {
-                  comments_only = false,
-                },
-                colors = {
-                  error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
-                  warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
-                  info = { "DiagnosticInfo", "#2563EB" },
-                  hint = { "DiagnosticHint", "#10B981" },
-                  default = { "Identifier", "#7C3AED" },
-                  test = { "Identifier", "#FF00FF" }
-                },
-     }
-      end
-  },
+  -- {
+  --   'folke/todo-comments.nvim',
+  --     dependencies = "nvim-lua/plenary.nvim",
+  --       config = function()
+  --         require("todo-comments").setup {
+  --              keywords = {
+  --                 FIX = {
+  --                   icon = " ", -- icon used for the sign, and in search results
+  --                   color = "error", -- can be a hex color, or a named color (see below)
+  --                   alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+  --                 -- signs = false, -- configure signs for some keywords individually
+  --                 },
+  --                 DONE = { icon = " ", color = "info" },
+  --   IN_PROG = { icon = "󰇘", color = "default" },
+  --                 FEAT = { icon = " ", color = "warning", alt = { "NEED", "REQUEST" } },
+  --                 WARN = { icon = " ", color = "error", alt = { "WARNING", "ERROR" } },
+  --                 TODO = { icon = " ", color = "hint", alt = { "TASK", "TBD" } },
+  --                 RISK = { icon = " ", color = "hint", alt = { "RISK" } },
+  --                 GOAL = { icon = " ", color = "test", alt = { "GOAL", "KPI"} },
+  --               },
+  --               highlight = {
+  --                 comments_only = false,
+  --               },
+  --               colors = {
+  --                 error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+  --                 warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
+  --                 info = { "DiagnosticInfo", "#2563EB" },
+  --                 hint = { "DiagnosticHint", "#10B981" },
+  --                 default = { "Identifier", "#7C3AED" },
+  --                 test = { "Identifier", "#FF00FF" }
+  --               },
+  --    }
+  --     end
+  -- },
   -- Various telescopes
   'nvim-telescope/telescope-file-browser.nvim',
 
@@ -405,14 +447,13 @@ return {
 -----------------------------------------------------------
 
 
-	{'jaredgorski/spacecamp'},
   {
 	"eldritch-theme/eldritch.nvim",
 	lazy = false,
 	priority = 1000,
 	opts = {},
   },
-  { 'rktjmp/lush.nvim' },
+  -- { 'rktjmp/lush.nvim' },
   -- { 'normanras/link.nvim' },
   -- { dir = '/Users/normrasmussen/Documents/Projects/link-two/', lazy = true},
   {
@@ -422,20 +463,9 @@ return {
   opts = {},
 },
   'Mofiqul/dracula.nvim',
-  'rose-pine/neovim',
   'EdenEast/nightfox.nvim',
   'rebelot/kanagawa.nvim',
   'catppuccin/nvim',
-  'sainnhe/sonokai',
-  {
-  "oxfist/night-owl.nvim",
-	  lazy = false, -- make sure we load this during startup if it is your main colorscheme
-	  priority = 1000, -- make sure to load this before all the other start plugins
-	  config = function()
-		-- load the colorscheme here
-		vim.cmd.colorscheme("night-owl")
-	  end,
-  },
 	  {
    "philosofonusus/morta.nvim",
     name = 'morta',
@@ -465,7 +495,7 @@ return {
   event = "VeryLazy",
   opts = { },
 },
-  'HiPhish/rainbow-delimiters.nvim',
+  { 'HiPhish/rainbow-delimiters.nvim' },
   {
     "wookayin/semshi",
     ft = "python",
@@ -491,6 +521,20 @@ return {
 -- Wakatime Tracking
   'wakatime/vim-wakatime',
 
+	-- Todo Manager
+	{
+  'duckdm/neowarrior.nvim',
+	event = "VeryLazy",
+	brancy = "develop",
+  dependencies = {
+    'nvim-telescope/telescope.nvim',
+    --- Optional but recommended for nicer inputs
+    'folke/noice.nvim',
+  },
+  --- See config example below
+  opts = {
+		}
+},
 ----------------------------------------------
 --- Custom Plugins and Tests
 ----------------------------------------------
