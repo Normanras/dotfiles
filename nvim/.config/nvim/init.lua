@@ -20,6 +20,8 @@ vim.g.localmapleader = ','
 vim.opt.colorcolumn = '+2'
 
 require('lazy').setup('plugins')
+-- require('code-shot').setup()
+
 
 -----------------------------------------------------------
 -- General Neovim settings and configuration

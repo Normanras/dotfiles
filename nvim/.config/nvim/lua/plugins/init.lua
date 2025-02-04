@@ -51,47 +51,14 @@ return {
 	-- lazy.nvim
 {
   "folke/noice.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   opts = {
-    -- add any options here
   },
   dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim",
-    -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
+    -- "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
     }
 },
--- {
---     "huantrinh1802/m_taskwarrior_d.nvim",
---     version = "*",
---     dependencies = { "MunifTanjim/nui.nvim" },
---     config = function()
---     -- Require
---       require("m_taskwarrior_d").setup()
---     -- Optional
---       vim.api.nvim_set_keymap("n", "<leader>te", "<cmd>TWEditTask<cr>", { desc = "TaskWarrior Edit", noremap = true, silent = true })
---       vim.api.nvim_set_keymap("n", "<leader>tv", "<cmd>TWView<cr>", { noremap = true, silent = true })
---       vim.api.nvim_set_keymap("n", "<leader>tu", "<cmd>TWUpdateCurrent<cr>", { noremap = true, silent = true })
---       vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>TWSyncTasks<cr>", { noremap = true, silent = true })
---       vim.api.nvim_set_keymap(
---         "n",
---         "<c-space>",
---         "<cmd>TWToggle<cr>",
---         { silent = true }
---       )
---     -- Be caution: it may be slow to open large files, because it scan the whole buffer
---       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
---         group = vim.api.nvim_create_augroup("TWTask", { clear = true }),
---         pattern = "*.md,*.markdown", -- Pattern to match Markdown files
---         callback = function()
---           vim.cmd('TWSyncTasks')
---         end,
---       })
---     end,
---   },
 
 	-- Neovim statusline
 	{
@@ -100,7 +67,6 @@ return {
 	config = function() require('lualine').setup({
 	 		options = {
 				theme = 'nord',
-				-- always_divide_middle = false,
 			},
 			sections = {
 				lualine_x = {
@@ -237,7 +203,7 @@ return {
 	"rcarriga/nvim-notify",
 	   config = function ()
 	     require("notify").setup ({
-	      	timeout = 5000,
+				   	timeout = 5000,
 					render = "minimal",
 					stages = "fade_in_slide_out",
 					on_open = function(win)
@@ -248,8 +214,8 @@ return {
 				vim.keymap.set("n", "<Esc>", function()
 					require("notify").dismiss()
 				end, { desc = "dismiss notify popup and clear hlsearch" })
-	      -- vim.api.nvim_notify = require('notify')
-		  -- vim.notify = require('notify')
+	      vim.api.nvim_notify = require('notify')
+		  vim.notify = require('notify')
 	    end
 	  },
 	-- Custom Terminal within Neovim
@@ -361,20 +327,6 @@ return {
   -- },
   -- { "jbyuki/venn.nvim" },
 
-  -- DAP (Debug adaptor Protocol)
-  -- 'mfussenegger/nvim-dap',
-
- -- {
- --   'mfussenegger/nvim-dap-python',
- --   config = function()
- --     require('dap-python').setup(
- --     '~/.virtualenvs/debugpy/bin/python'
- --     )
- --    end
- --  },
-	--  {
-	-- 'rcarriga/nvim-dap-ui', dependencies = {"mfussenegger/nvim-dap"}
-	--  },
 
 ---------------------------------------------------------
 -- Text, Icons, Symbols

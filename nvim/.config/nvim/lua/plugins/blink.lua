@@ -5,6 +5,7 @@ return {
   dependencies = {
 									'rafamadriz/friendly-snippets',
 									'L3MON4D3/LuaSnip', version = 'v2.*',
+									"moyiz/blink-emoji.nvim",
 									},
   opts = {
 		keymap = {
@@ -52,7 +53,15 @@ return {
       jump = function(direction) require('luasnip').jump(direction) end,
     },
 		 sources = {
-			default = {'lsp', 'path', 'snippets', 'buffer'},
-			     },
+			default = {'lsp', 'path', 'snippets', 'buffer', 'emoji'},
+				providers = {
+						emoji = {
+							module = "blink-emoji",
+							name = "Emoji",
+							score_offset = 15, -- Tune by preference
+							opts = { insert = true }, -- Insert emoji (default) or complete its name
+					},
+        }
+      }
 	}
 }
