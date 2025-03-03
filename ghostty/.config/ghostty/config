@@ -1,0 +1,9 @@
+font-family = "Jet Brains Mono"
+
+# fix tmux-vim-navigate
+keybind = alt+right=unbind
+keybind = alt+left=unbind
+
+theme = catppuccin-mocha
+background-opacity = 0.9
+shell-integration = "zsh"
