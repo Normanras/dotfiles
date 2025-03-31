@@ -50,6 +50,12 @@ map('n', '<leader>fc', ':set foldmethod=expr foldexpr=getline(v:lnum)=~"^\\s*".&
 map('n', '<C-t>', ':ToggleTerm direction=float<CR>', default_opts)
 map('t', '<C-n>', '<C-\\><C-n><CR>', default_opts) -- Exit Insert Mode Faster
 
+-- Tiny Code Action
+-- map('n', "<leader>ca", function() require("tiny-code-action").code_action() end, default_opts)
+vim.keymap.set("n", "<leader>ca", function()
+	require("tiny-code-action").code_action()
+end, { noremap = true, silent = true })
+
 ------------------------------------------------
 -- Old Keymaps from Nvim-Mapper (Sunsetted)
 ------------------------------------------------

@@ -4,26 +4,32 @@ return {
 -- They should be pulled first!
 -----------------------------------------------------------------
 
-{'williamboman/mason.nvim',
-  config = function() require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-      }
-  })
-    end,
-  },
-    { 'williamboman/mason-lspconfig.nvim',
-      config = function() require("mason-lspconfig").setup{} end,
-    },
-    { 'neovim/nvim-lspconfig' },
+-- {'williamboman/mason.nvim',
+--   config = function() require("mason").setup({
+--     ui = {
+--         icons = {
+--             package_installed = "✓",
+--             package_pending = "➜",
+--             package_uninstalled = "✗"
+--         }
+--       }
+--   })
+--     end,
+--   },
+-- 	{ 'williamboman/mason-lspconfig.nvim',
+-- 		config = function() require("mason-lspconfig").setup{
+-- 			   ensure_installed = { "lua_ls", "ruff", "black" },
+-- 			} end,
+-- 	},
 	{
-	'hinell/lsp-timeout.nvim',
-	dependencies={ "neovim/nvim-lspconfig" }
-    },
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "LspAttach", -- Or `LspAttach`
+    priority = 1000, -- needs to be loaded in first
+    config = function()
+        require('tiny-inline-diagnostic').setup()
+				vim.diagnostic.config({ virtual_text = true, virtual_lines = true })
+    end
+},
     {
     'L3MON4D3/LuaSnip', version = "2.*",
       build = "make install_jsregexp",
@@ -43,19 +49,18 @@ return {
       end,
   },
 
+	        -- Error: Command '['/Users/normrasmussen/.local/share/nvim/mason/packages/ruff/venv/bin/python3', '-m', 'ensurepip', '--upgrade', '--default-pip']' returned non-zero exit status 1.
+
 
 ------------------------------------------------------------
 -- General Functionality
 ------------------------------------------------------------
 
-	-- lazy.nvim
 {
   "folke/noice.nvim",
-  -- event = "VeryLazy",
   opts = {
   },
   dependencies = {
-    -- "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
     }
 },
@@ -86,24 +91,24 @@ return {
 	},
 
 	-- A file explorer that lets you edit your filesystem like a normal Neovim buffer.
-	{
-  'stevearc/oil.nvim',
-  opts = {},
-  dependencies = { { "echasnovski/mini.icons", opts = {} } },
-	},
+	-- {
+	--  'stevearc/oil.nvim',
+	--  opts = {},
+	--  dependencies = { { "echasnovski/mini.icons", opts = {} } },
+	-- },
 
 	-- vim plugin for asynchronous synchronisation of remote files and local files using rsync
   { 'kenn7/vim-arsync',
 	dependencies={'prabirshrestha/async.vim'},
   },
 	--The goal of nvim-ufo is to make Neovim's fold look modern and keep high performance.
-  {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'},
+  -- {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'},
 
 	-- Open telescope and show files in the same directory as the current buffer.
-  { 'MaximilianLloyd/adjacent.nvim' },
+  -- { 'MaximilianLloyd/adjacent.nvim' },
 
 	--You can use this plugin to run HTTP requests directly in your favorite text editor.
-  { 'BlackLight/nvim-http' },
+  -- { 'BlackLight/nvim-http' },
 
 	-- Vim plugin for compiling, uploading, and debugging arduino sketches.
 	-- It uses arduino-cli when available (recommended), and falls back to
@@ -173,8 +178,9 @@ return {
 
   -- Rename and Work with Buffer & Tabs
   {'romgrk/barbar.nvim',
-		dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+		dependencies = { { "echasnovski/mini.icons", opts = {} },
+										 { 'nvim-tree/nvim-web-devicons', opts = {} }
+										},
   },
 
 
@@ -219,20 +225,16 @@ return {
 	    end
 	  },
 	-- Custom Terminal within Neovim
-  {'akinsho/toggleterm.nvim', version = "*", opts = {
-	direction = 'float',
-  }},
+  {'akinsho/toggleterm.nvim', version = "*",
+		opts = {
+			direction = 'float',
+			}
+	},
 
 
 ------------------------------------------------------------
 -- echasnovski's Minis get a section of their own...
 ------------------------------------------------------------
-
--- { 'echasnovski/mini.pick', version = '*',
--- 	config = function()
--- 			require('mini.pick').setup()
--- 		end
--- 	},
 {
     'echasnovski/mini.comment', version = '*',
     config = function()
@@ -332,12 +334,12 @@ return {
 -- Text, Icons, Symbols
 ----------------------------------------------------------
 
-  -- {
-  --   'simrat39/symbols-outline.nvim',
-  --   config = function()
-  --     require('symbols-outline').setup()
-  --   end
-  -- },
+  {
+    'simrat39/symbols-outline.nvim',
+    config = function()
+      require('symbols-outline').setup()
+    end
+  },
   {
   "j-hui/fidget.nvim",
   opts = {
@@ -348,8 +350,8 @@ return {
   -- 'karb94/neoscroll.nvim',
 
   -- Allow Popups for Telescope etc
-  'nvim-lua/popup.nvim',
-  'nvim-lua/plenary.nvim',
+  -- 'nvim-lua/popup.nvim',
+  -- 'nvim-lua/plenary.nvim',
 
   -- Todo & Comments for Organization
   -- {
@@ -448,27 +450,6 @@ return {
   opts = { },
 },
   { 'HiPhish/rainbow-delimiters.nvim' },
-  {
-    "wookayin/semshi",
-    ft = "python",
-    build = ":UpdateRemotePlugins",
-    config = function()
-      vim.api.nvim_set_hl(0, "semshiLocal", { ctermfg=209, fg="#80aa9e" } )
-      vim.api.nvim_set_hl(0, "semshiGlobal", { ctermfg=214, fg="#d3869b" } )
-      vim.api.nvim_set_hl(0, "semshiImported", { ctermfg=214, fg="#8bba7f", cterm=bold, gui=bold } )
-      vim.api.nvim_set_hl(0, "semshiParameter", { ctermfg=75,  fg="#8bba7f" } )
-      vim.api.nvim_set_hl(0, "semshiParameterUnused", { ctermfg=117, fg="#34381b", cterm=underline, gui=underline} )
-      vim.api.nvim_set_hl(0, "semshiFree", { ctermfg=218, fg="#e9b143"} )
-      vim.api.nvim_set_hl(0, "semshiBuiltin", { ctermfg=207, fg="#f2594b"} )
-      vim.api.nvim_set_hl(0, "semshiAttribute", { ctermfg=49,  fg="#3b4439"} )
-      vim.api.nvim_set_hl(0, "semshiSelf", { ctermfg=249, fg="#db4740"} )
-      vim.api.nvim_set_hl(0, "semshiUnresolved", { ctermfg=226, fg="#f28534", cterm=underline, gui=underline} )
-      vim.api.nvim_set_hl(0, "semshiSelected", { ctermfg=231, fg="#ffffff", ctermbg=161, bg="#4c3432"} )
-      vim.api.nvim_set_hl(0, "semshiErrorSign", { ctermfg=231, fg="#ffffff", ctermbg=160, bg="#402120"} )
-      vim.api.nvim_set_hl(0, "semshiErrorChar", { ctermfg=231, fg="#ffffff", ctermbg=160, bg="#402120"} )
-      vim.cmd([[sign define semshiError text=E> texthl=semshiErrorSign]])
-    end
-  },
 
 -- Wakatime Tracking
   'wakatime/vim-wakatime',

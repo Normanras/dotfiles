@@ -1,13 +1,18 @@
 return {
   'saghen/blink.cmp',
   lazy = false, -- lazy loading handled internally
-	version = '*',
+	version = '1.*',
+	---@module 'blink.cmp'
+  ---@type blink.cmp.Config
   dependencies = {
 									'rafamadriz/friendly-snippets',
 									'L3MON4D3/LuaSnip', version = 'v2.*',
 									"moyiz/blink-emoji.nvim",
 									},
   opts = {
+		-- chartoggle = { enabled = true },
+		--   indent = { enabled = true },
+		--   tree = { enabled = true },
 		keymap = {
       preset = "default",
 				['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
@@ -31,37 +36,39 @@ return {
 				['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
     },
 		appearance = {
-			use_nvim_cmp_as_default = true,
-			nerd_font_variant = 'normal',
+			-- use_nvim_cmp_as_default = true,
+			nerd_font_variant = 'mono',
 		},
-		completion = {
-			menu = { auto_show = function(ctx) return ctx.mode ~= 'cmdline' end },
+		completion = {documentation = { auto_show = false },
+			-- menu = { auto_show = function(ctx) return ctx.mode ~= 'cmdline' end },
 			-- keyword = { range = 'prefix', regex = '[%w_\\-]'},
 			-- trigger = { show_on_blocked_trigger_characters = function()
 			-- 							if vim.api.nvim_get_mode().mode == 'c' then return {} end
 			-- 								return { ' ', '\n', '\t' }
 			-- 							end },
 		},
-		snippets = {
-      expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
-      active = function(filter)
-        if filter and filter.direction then
-          return require('luasnip').jumpable(filter.direction)
-        end
-        return require('luasnip').in_snippet()
-      end,
-      jump = function(direction) require('luasnip').jump(direction) end,
-    },
+		-- snippets = {
+		--     expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
+		--     active = function(filter)
+		--       if filter and filter.direction then
+		--         return require('luasnip').jumpable(filter.direction)
+		--       end
+		--       return require('luasnip').in_snippet()
+		--     end,
+		--     jump = function(direction) require('luasnip').jump(direction) end,
+		--   },
 		 sources = {
-			default = {'lsp', 'path', 'snippets', 'buffer', 'emoji'},
-				providers = {
-						emoji = {
-							module = "blink-emoji",
-							name = "Emoji",
-							score_offset = 15, -- Tune by preference
-							opts = { insert = true }, -- Insert emoji (default) or complete its name
-					},
-        }
-      }
-	}
+			default = {'lsp', 'path', 'snippets', 'buffer'},
+				-- providers = {
+				-- 		emoji = {
+				-- 			module = "blink-emoji",
+				-- 			name = "Emoji",
+				-- 			score_offset = 15, -- Tune by preference
+				-- 			opts = { insert = true }, -- Insert emoji (default) or complete its name
+				-- 	},
+				--     }
+      },
+		fuzzy = { implementation = "prefer_rust_with_warning" }
+	},
+	  opts_extend = { "sources.default" }
 }

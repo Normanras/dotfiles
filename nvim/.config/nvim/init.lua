@@ -18,6 +18,7 @@ vim.g.mapleader = ','
 vim.g.localmapleader = ','
 --- vim.opt.textwidth = 85
 vim.opt.colorcolumn = '+2'
+-- vim.diagnostic.config({ virtual_text = true, virtual_lines = true })
 
 require('lazy').setup('plugins')
 -- require('code-shot').setup()
@@ -48,7 +49,7 @@ opt.shadafile  = "NONE"
 opt.shadafile = ""
 opt.shell = "/bin/zsh"
 opt.updatetime = 200
-opt.cursorline = true
+-- opt.cursorline = true
 g.markdown_folding = 1
 -- g.markdown_enable_folding = 1
 opt.spell=true
@@ -91,15 +92,6 @@ g.shiftwidth = 2              -- Shift 4 spaces when tab
 g.tabstop = 2                 -- 1 tab == 4 spaces
 g.smartindent = true          -- Autoindent new lines
 -----------------------------------------------------------
--- Glow Settings
------------------------------------------------------------
-g.glow_binary_path = '/bin'
-g.glow_border = 'rounded'
-g.glow_width = 120
-g.glow_use_pager = true
-g.glow_style = 'dark'
-
------------------------------------------------------------
 -- AutoCmd and Additional Function Settings.
 -----------------------------------------------------------
 -- 2 spaces for selected filetypes
@@ -137,15 +129,6 @@ for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
     end
 
--- Deletes all trailing whitespaces in a file if it's not binary nor a diff.
-function _G.trim_trailing_whitespaces()
-    if not o.binary and o.filetype ~= 'diff' then
-        local current_view = fn.winsaveview()
-        cmd([[keeppatterns %s/\s\+$//e]])
-        fn.winrestview(current_view)
-    end
-end
-
 -- Correctly set $VIRTUAL_ENV for Python venvs.
 if vim.fn.exists("$VIRTUAL_ENV") == 1 then
     vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system("pyenv which python3 | head -n2 | tail -n1"), "\n", "", "g")
@@ -153,26 +136,5 @@ else
     vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system("which python3"), "\n", "", "g")
 end
 
---  see https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
---[[vim.cmd[[
-	highlight! link CmpItemMenu Comment
-	" gray
-	highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
-	" blue
-	highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
-	highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
-	" light blue
-	highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
-	highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
-	highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
-	" pink
-	highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
-	highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
-	" front
-	highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
-	highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
-	highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
-      ]]
-      --]]
-
+vim.lsp.enable({'ruff', 'marksman'})
 require('core/keymaps')

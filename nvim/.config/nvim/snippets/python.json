@@ -3,5 +3,5 @@
 		"prefix": "pprint-import",
 		"body": ["import pprint \n\n pp=pprint.PrettyPrinter(indent=4) \n\n pp.pprint(VARIABLE)"],
 		"description": "Easily import, declare, and add a Pretty Print for easier reading."
-	},
+	}
 }
