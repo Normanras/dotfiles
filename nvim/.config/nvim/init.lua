@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ','
 vim.g.localmapleader = ','
---- vim.opt.textwidth = 85
 vim.opt.colorcolumn = '+2'
 -- vim.diagnostic.config({ virtual_text = true, virtual_lines = true })
 
@@ -63,8 +62,8 @@ vim.cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
 opt.number = true               -- Show line number
 opt.relativenumber = true       -- Show Current Line with Relative numbers above and below cursor.
 opt.showmatch = true            -- Highlight matching parenthesis
-opt.foldmethod = "expr"       -- Enable folding (default 'foldmarker')
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldmethod = "expr"       -- Enable folding (default 'foldmarker')
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.splitright = true           -- Vertical split to the right
 opt.splitbelow = true           -- Horizontal split to the bottom
 opt.ignorecase = true           -- Ignore case letters when search
@@ -91,6 +90,7 @@ g.expandtab = false            -- Use spaces instead of tabs
 g.shiftwidth = 2              -- Shift 4 spaces when tab
 g.tabstop = 2                 -- 1 tab == 4 spaces
 g.smartindent = true          -- Autoindent new lines
+
 -----------------------------------------------------------
 -- AutoCmd and Additional Function Settings.
 -----------------------------------------------------------
@@ -101,7 +101,6 @@ vim.cmd [[
 vim.cmd [[ autocmd FileType python set textwidth=250 ]]
 vim.cmd [[ autocmd FileType lua set textwidth=80 ]]
 vim.cmd [[ autocmd FileType markdown,text set shiftwidth=2 foldlevel=99 ]]
--- vim.cmd [[ autocmd FileType markdown setlocal foldlevel=99 ]]
 vim.cmd[[ colorscheme morta ]]
 
 local disabled_built_ins = {
@@ -136,5 +135,7 @@ else
     vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system("which python3"), "\n", "", "g")
 end
 
-vim.lsp.enable({'ruff', 'marksman'})
+vim.lsp.enable({'ruff', 'marksman', 'emmet-ls'})
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('core/keymaps')

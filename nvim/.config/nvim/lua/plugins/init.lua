@@ -4,30 +4,13 @@ return {
 -- They should be pulled first!
 -----------------------------------------------------------------
 
--- {'williamboman/mason.nvim',
---   config = function() require("mason").setup({
---     ui = {
---         icons = {
---             package_installed = "✓",
---             package_pending = "➜",
---             package_uninstalled = "✗"
---         }
---       }
---   })
---     end,
---   },
--- 	{ 'williamboman/mason-lspconfig.nvim',
--- 		config = function() require("mason-lspconfig").setup{
--- 			   ensure_installed = { "lua_ls", "ruff", "black" },
--- 			} end,
--- 	},
 	{
     "rachartier/tiny-inline-diagnostic.nvim",
-    event = "LspAttach", -- Or `LspAttach`
+    event = "VeryLazy", -- Or `LspAttach`
     priority = 1000, -- needs to be loaded in first
     config = function()
         require('tiny-inline-diagnostic').setup()
-				vim.diagnostic.config({ virtual_text = true, virtual_lines = true })
+				vim.diagnostic.config({ virtual_text = true })
     end
 },
     {
