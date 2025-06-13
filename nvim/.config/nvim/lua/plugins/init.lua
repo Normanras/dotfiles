@@ -170,15 +170,15 @@ return {
   "ggandor/lightspeed.nvim",
 
 -- Top Right Notify Pop Up
-	 {
-	"rcarriga/nvim-notify",
-	   config = function ()
-	     require("notify").setup {
-	      }
-	      -- vim.api.nvim_notify = require('notify')
-		  vim.notify = require('notify')
-	    end
-	  },
+	--  {
+	-- "rcarriga/nvim-notify",
+	--    config = function ()
+	--      require("notify").setup {
+	--       }
+	--       -- vim.api.nvim_notify = require('notify')
+	-- 	  vim.notify = require('notify')
+	--     end
+	--   },
 
   {'akinsho/toggleterm.nvim', version = "*", opts = {
 	direction = 'float',
