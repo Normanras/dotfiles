@@ -292,6 +292,14 @@ return {
 -----------------------------------------------------------
 -- Markdown Plugins
 ------------------------------------------------------------
+	 {
+        'jakewvincent/mkdnflow.nvim',
+        config = function()
+            require('mkdnflow').setup({
+                -- Config goes here; leave blank for defaults
+            })
+        end
+    },
 
   --  {
   --   "iamcco/markdown-preview.nvim",
@@ -454,6 +462,11 @@ return {
 ----------------------------------------------
 --- Custom Plugins and Tests
 ----------------------------------------------
+	{
+		dir = '/Users/normrasmussen/Documents/Projects/markdown_organizer.nvim',
+		dev = true,
+		name = 'MarkdownOrganizerPlugin',
+	},
   -- {
   --   dir = '/Users/normrasmussen/Documents/Projects/tasksPlugin.nvim/',
   --   dev = true,
