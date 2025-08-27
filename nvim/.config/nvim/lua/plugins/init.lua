@@ -40,12 +40,14 @@ return {
 ------------------------------------------------------------
 
 {
+    "StanAngeloff/claudius.nvim",
+    opts = {},
+},
+{
   "folke/noice.nvim",
-  opts = {
-  },
-  dependencies = {
-    "rcarriga/nvim-notify",
-    }
+		dependencies = { "rcarriga/nvim-notify" },
+		opts = {
+		}
 },
 
 	-- Neovim statusline
@@ -58,6 +60,11 @@ return {
 			},
 			sections = {
 				lualine_x = {
+					{
+        require("noice").api.statusline.mode.get,
+        cond = require("noice").api.statusline.mode.has,
+        color = { fg = "#ff9e64" },
+      },
 					-- {
 				-- 	function()
 				-- 		return require("lazydo").get_lualine_stats()
@@ -288,6 +295,11 @@ return {
 		})
 	  end
 	 },
+	{ 'echasnovski/mini.indentscope', version = '*',
+			config = function()
+				require('mini.indentscope').setup()
+		end
+	},
 
 -----------------------------------------------------------
 -- Markdown Plugins
@@ -326,12 +338,6 @@ return {
 ----------------------------------------------------------
 
   {
-    'simrat39/symbols-outline.nvim',
-    config = function()
-      require('symbols-outline').setup()
-    end
-  },
-  {
   "j-hui/fidget.nvim",
   opts = {
     -- options
@@ -345,9 +351,10 @@ return {
   -- 'nvim-lua/plenary.nvim',
 
   -- Todo & Comments for Organization
-  -- {
-  --   'folke/todo-comments.nvim',
-  --     dependencies = "nvim-lua/plenary.nvim",
+  {
+    'folke/todo-comments.nvim',
+      dependencies = "nvim-lua/plenary.nvim",
+			opts = {}
   --       config = function()
   --         require("todo-comments").setup {
   --              keywords = {
@@ -378,7 +385,7 @@ return {
   --               },
   --    }
   --     end
-  -- },
+  },
   -- Various telescopes
   'nvim-telescope/telescope-file-browser.nvim',
 

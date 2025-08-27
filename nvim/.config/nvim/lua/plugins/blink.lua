@@ -1,18 +1,14 @@
 return {
   'saghen/blink.cmp',
-  lazy = false, -- lazy loading handled internally
 	version = '1.*',
 	---@module 'blink.cmp'
   ---@type blink.cmp.Config
   dependencies = {
 									'rafamadriz/friendly-snippets',
 									'L3MON4D3/LuaSnip', version = 'v2.*',
-									"moyiz/blink-emoji.nvim",
 									},
   opts = {
-		-- chartoggle = { enabled = true },
-		--   indent = { enabled = true },
-		--   tree = { enabled = true },
+		-- tree = { enabled = true },
 		keymap = {
       preset = "default",
 				['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
@@ -26,17 +22,14 @@ return {
 					'fallback'
 				},
 				['<S-Tab>'] = { 'snippet_backward', 'fallback' },
-
 				['<Up>'] = { 'select_prev', 'fallback' },
 				['<Down>'] = { 'select_next', 'fallback' },
 				['<C-p>'] = { 'select_prev', 'fallback' },
 				['<C-n>'] = { 'select_next', 'fallback' },
-
 				['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
 				['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
     },
 		appearance = {
-			-- use_nvim_cmp_as_default = true,
 			nerd_font_variant = 'mono',
 		},
 		completion = {documentation = { auto_show = false },
@@ -59,14 +52,6 @@ return {
 		--   },
 		 sources = {
 			default = {'lsp', 'path', 'snippets', 'buffer'},
-				-- providers = {
-				-- 		emoji = {
-				-- 			module = "blink-emoji",
-				-- 			name = "Emoji",
-				-- 			score_offset = 15, -- Tune by preference
-				-- 			opts = { insert = true }, -- Insert emoji (default) or complete its name
-				-- 	},
-				--     }
       },
 		fuzzy = { implementation = "prefer_rust_with_warning" }
 	},
